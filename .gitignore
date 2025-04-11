@@ -1,0 +1,33 @@
+# Node.js dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+
+# IDE settings
+.idea/
+.vscode/
+
+# Yarn files
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# Storybook build
+storybook-static/
+
+# Webpack cache
+.cache/
+
+# Tailwind CSS
+tailwind.config.js
