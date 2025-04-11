@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 export const useKeyboardLoader = (canvas: HTMLDivElement | null) => {
-    const modelRef = useRef<THREE.Object3D>();
+    const modelRef = useRef<THREE.Object3D | null>(null);
     const [sceneReady, setSceneReady] = useState(false);
 
     useEffect(() => {

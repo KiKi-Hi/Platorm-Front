@@ -1,7 +1,8 @@
 import React from 'react';
+import AppRouter from "@app/router";
 
 const App = () => {
-    return <h1 className="text-2xl font-bold">키키하이 시작!</h1>;
+    return <AppRouter />;
 };
 
 export default App;
