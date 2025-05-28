@@ -12,7 +12,10 @@
     "paths": {
       "@view/*": ["view/*"],
       "@app/*": ["app/*"],
-      "@service/*": ["service/*"]
+      "@service/*": ["service/*"],
+      "@assets/*": [
+        "../public/assets/*"
+      ]
     }
   },
   "include": ["src"],

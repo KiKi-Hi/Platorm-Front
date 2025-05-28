@@ -8,6 +8,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
     "axios": "^1.8.4",
+    "clsx": "^2.1.1",
     "dotenv": "^16.5.0",
     "js-cookie": "^3.0.5",
     "react": "^19.1.0",
@@ -15,10 +16,13 @@
     "react-query": "^3.39.3",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.5.0",
+    "tailwind-merge": "^3.2.0",
     "three": "^0.175.0",
     "workbox-webpack-plugin": "^7.3.0"
   },
   "scripts": {
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "dev": "cross-env NODE_ENV=development webpack serve --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "storybook": "storybook dev -p 6006",
@@ -41,7 +45,7 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.2",
     "@types/three": "^0.175.0",
-    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/eslint-plugin": "^8.32.0",
     "@typescript-eslint/parser": "^8.29.1",
     "autoprefixer": "^10.4.21",
     "babel-loader": "^10.0.0",

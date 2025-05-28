@@ -28,8 +28,8 @@ export const useKeyboardLoader = (container: HTMLDivElement) => {
     controls.update();
 
     const textureLoader = new THREE.TextureLoader();
-    const keycapTexture = textureLoader.load('/assets/img/model/orange.png', tex => (tex.flipY = false));
-    const housingTexture = textureLoader.load('/assets/img/model/housingPink.png', tex => (tex.flipY = false));
+    const keycapTexture = textureLoader.load('/assets/img/model/keycap/orange.png', tex => (tex.flipY = false));
+    const housingTexture = textureLoader.load('/assets/img/model/housing/housingGray.png', tex => (tex.flipY = false));
 
     const loader = new GLTFLoader();
     let model: THREE.Object3D | undefined;
@@ -41,7 +41,7 @@ export const useKeyboardLoader = (container: HTMLDivElement) => {
 
             model.traverse((child: any) => {
                 if (child.isMesh) {
-                    child.material.map = keycapTexture;
+                    child.material.map = keycapTexture; // TODO 키캡 안뜸
                     if (child.name.includes('하우징')) {
                         child.material.map = housingTexture;
                     }
