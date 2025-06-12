@@ -1,4 +1,8 @@
+import React from 'react';
+import { useRouteError } from 'react-router-dom';
+
 export const ErrorPage = () => {
+    const error = useRouteError() as Error;
     return (
         <div className="w-96 h-[812px] relative bg-white overflow-hidden">
             <div data-location="Home" className="w-96 h-20 pt-2 pb-7 left-0 top-[727px] absolute bg-Fill-White border-t-[0.40px] border-Line-Hard-1 inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden">
@@ -39,11 +43,11 @@ export const ErrorPage = () => {
                     </div>
                     <div className="w-72 py-5 flex flex-col justify-center items-center gap-3">
                         <div className="self-stretch text-center justify-start text-Text-Default-0 text-base font-semibold font-['Pretendard'] leading-normal">다시 시도해주세요!</div>
-                        <div className="self-stretch text-center justify-start text-Text-Light-1 text-sm font-normal font-['Pretendard'] leading-tight">일시적인 오류가 발생했습니다.<br/>잠시 후에 다시 시도해주세요!</div>
+                        <div className="self-stretch text-center justify-start text-Text-Light-1 text-sm font-normal font-['Pretendard'] leading-tight">{error.message || '일시적인 오류가 발생했습니다.<br/>잠시 후에 다시 시도해주세요!'}</div>
                     </div>
                 </div>
                 <div data-primary="Default" className="self-stretch h-11 px-5 py-2 bg-Fill-HighLight rounded-lg inline-flex justify-center items-center">
-                    <div className="justify-start text-Text-White text-xl font-bold font-['Pretendard'] leading-loose">확인</div>
+                    <div className="justify-start text-Text-White text-xl font-bold font-['Pretendard'] leading-loose" onClick={() => window.location.href = '/'}>확인</div>
                 </div>
             </div>
             <div className="w-96 h-11 px-5 left-0 top-0 absolute inline-flex flex-col justify-center items-start">

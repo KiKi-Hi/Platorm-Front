@@ -31,3 +31,7 @@ storybook-static/
 
 # Tailwind CSS
 tailwind.config.js
+
+# aws keys
+kiki-hi.pem
+public_key.pub

@@ -1,9 +1,16 @@
 import React from 'react';
-import {RouterProvider} from "react-router-dom";
-import router from "@app/Router";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import AppRouter from "@app/Router";
+import {ErrorPage} from "@view/pages/error/ErrorPage";
+import ErrorBoundary from "@view/pages/error/components/ErrorBoundary";
 
 const App = () => {
-    return <RouterProvider router={router} />
+    const router = createBrowserRouter(AppRouter);
+    return (
+        <ErrorBoundary fallback={<ErrorPage />}>
+            <RouterProvider router={router} />
+        </ErrorBoundary>
+    )
 };
 
 export default App;
