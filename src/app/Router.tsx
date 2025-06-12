@@ -18,14 +18,11 @@ import {ErrorPage} from "@view/pages/error/ErrorPage";
 
 const AppRouter: RouteObject[] = [
     {
-        path: ROUTES.LOGIN,
-        element: <LoginPage/>
-    },
-    {
         path: '/',
         element: <BaseLayout/>,
         errorElement: <ErrorPage />,
         children: [
+            {path: ROUTES.LOGIN, element: <LoginPage/>},
             { path: ROUTES.HOME, element: <HomePage/> },
             { path: ROUTES.PRODUCT_DETAIL, element: <ProductDetailPage/>},
             { path: ROUTES.CUSTOMIZE_MAIN, element: <CustomizeMainPage/> },

@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "typeRoots": ["./node_modules/@types", "./src"],
+    "include": ["src/**/*", "src/custom.d.ts"],
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react"
+  },
+  "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
     "jsx": "react-jsx",

@@ -30,11 +30,17 @@ module.exports = {
             {
                 test: /\.(js|ts|tsx)$/,
                 exclude: /node_modules/,
-                use: 'babel-loader',
+                use: ['babel-loader']
             },
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader', 'postcss-loader'],
+            },
+            {
+                use: ['@svgr/webpack', 'file-loader'],
+                issuer: {
+                    and: [/\.(ts|tsx|js|jsx|md|mdx)$/]
+                }
             },
             {
                 test: /\.(png|jpg|jpeg|gif|svg)$/i,

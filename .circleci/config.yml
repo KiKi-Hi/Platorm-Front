@@ -1,0 +1,43 @@
+version: 2.1
+
+orbs:
+  docker: circleci/docker@2.5.0
+
+jobs:
+  build-and-push:
+    docker:
+      - image: cimg/node:20.0
+    steps:
+      - checkout
+      - setup_remote_docker
+      - docker/check
+      - docker/build:
+          image: $DOCKER_IMAGE_NAME
+          tag: latest
+      - docker/push:
+          image: $DOCKER_IMAGE_NAME
+          tag: latest
+          
+  deploy:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "${SSH_KEY_FINGERPRINT}"
+      - run:
+          name: Deploy to EC2
+          command: |
+            ssh -o StrictHostKeyChecking=no ubuntu@${EC2_HOST} 'bash -s' < ./deploy.sh
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build-and-push:
+          context: docker-hub-creds
+      - deploy:
+          requires:
+            - build-and-push
+          context: deployment-context
