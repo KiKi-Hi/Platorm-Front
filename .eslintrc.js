@@ -9,6 +9,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
+    'plugin:tailwindcss/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -18,7 +19,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['react', '@typescript-eslint', 'react-hooks'],
+  plugins: ['react', '@typescript-eslint', 'react-hooks', 'prettier', 'tailwindcss'],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
     'import/extensions': [
@@ -33,6 +34,7 @@ module.exports = {
     ],
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
+    'prettier/prettier': 'error'
   },
   settings: {
     'import/resolver': {
@@ -43,5 +45,8 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    tailwindcss: {
+      config: './tailwind.config.js'
+    }
   },
 };
