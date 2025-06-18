@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {RouteObject } from 'react-router-dom';
 import {ROUTES} from "../model/constants/routes";
 
@@ -13,7 +13,7 @@ import SearchPage from "@view/pages/search/SearchPage";
 import CartPage from "@view/pages/cart/CartPage";
 import PaymentCompletePage from "@view/pages/payment/PaymentCompletePage";
 import PaymentPage from "@view/pages/payment/PaymentPage";
-import HomePage from "@view/pages/main/HomePage";
+import {HomePage} from "@view/pages/main/HomePage";
 import {ErrorPage} from "@view/pages/error/ErrorPage";
 
 const AppRouter: RouteObject[] = [
