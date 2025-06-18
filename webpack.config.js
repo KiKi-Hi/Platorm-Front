@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const dotenv = require('dotenv');
+const webpack = require('webpack');
 dotenv.config();
 
 module.exports = {
@@ -24,6 +25,12 @@ module.exports = {
         historyApiFallback: true,
         port: 3000,
         hot: true,
+        client: {
+            webSocketURL: 'ws://localhost:3000/ws',
+            logging: 'info',
+            overlay: true,
+            reconnect: 10,
+        },
     },
     module: {
         rules: [
@@ -37,13 +44,18 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
             {
-                use: ['@svgr/webpack', 'file-loader'],
-                issuer: {
-                    and: [/\.(ts|tsx|js|jsx|md|mdx)$/]
-                }
+                test: /\.svg$/i,
+                resourceQuery: /url/,
+                type: 'asset/resource',
             },
             {
-                test: /\.(png|jpg|jpeg|gif|svg)$/i,
+                test: /\.svg$/i,
+                issuer: /\.[jt]sx?$/,
+                resourceQuery: { not: [/url/] },
+                use: ['@svgr/webpack'],
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i, // svg 제외
                 type: 'asset/resource',
             },
         ],
@@ -51,6 +63,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html',
+        }),
+        new webpack.DefinePlugin({
+            'process.env.REACT_APP_BASE_URL': JSON.stringify(process.env.REACT_APP_BASE_URL),
         }),
     ],
 };

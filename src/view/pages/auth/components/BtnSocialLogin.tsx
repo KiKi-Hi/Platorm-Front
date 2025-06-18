@@ -12,7 +12,6 @@ const BtnSocialLogin: React.FC<SocialLoginButtonProps> = ({type, onClick}) => {
     const label = isKakao ? "카카오로 로그인" : "구글로 로그인";
     const bgColor = isKakao ? "bg-[#FEE500]" : "bg-white";
     const textColor = isKakao ? "text-black" : "text-black";
-    const Icon = isKakao ? KakaoIcon : GoogleIcon;
 
     return (
         <button
@@ -20,7 +19,10 @@ const BtnSocialLogin: React.FC<SocialLoginButtonProps> = ({type, onClick}) => {
             className={`w-[335px] h-[50px] flex items-center justify-center rounded-full ${bgColor} ${textColor} text-[16px] font-medium shadow-sm relative`}
             aria-label={label}
         >
-            <img src={Icon} className="w-5 h-5 absolute left-[24px] " alt={label}/>
+            <div className="w-5 h-5 absolute left-[24px] ">
+                {isKakao ? <KakaoIcon/> : <GoogleIcon/>}
+            </div>
+
             {label}
         </button>
     );

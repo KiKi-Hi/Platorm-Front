@@ -45,6 +45,7 @@
     "@storybook/react": "^8.6.12",
     "@storybook/react-webpack5": "^8.6.12",
     "@storybook/test": "^8.6.12",
+    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4.1.10",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^19.1.8",
@@ -70,11 +71,12 @@
     "prettier": "^3.5.3",
     "storybook": "^8.6.12",
     "style-loader": "^4.0.0",
+    "svgo": "2",
     "ts-loader": "^9.5.2",
     "tsconfig-paths-webpack-plugin": "^4.2.0",
     "typescript": "^5.8.3",
-    "webpack": "^5.99.5",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.1"
+    "webpack": "5",
+    "webpack-cli": "5",
+    "webpack-dev-server": "4"
   }
 }

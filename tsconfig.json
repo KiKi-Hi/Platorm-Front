@@ -1,28 +1,23 @@
 {
   "compilerOptions": {
-    "typeRoots": ["./node_modules/@types", "./src"],
-    "include": ["src/**/*", "src/custom.d.ts"],
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react"
-  },
-  "target": "ESNext",
+    "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./src",
+    "typeRoots": ["./node_modules/@types", "./src"],
     "paths": {
       "@view/*": ["view/*"],
       "@app/*": ["app/*"],
       "@service/*": ["service/*"],
-      "@assets/*": [
-        "../public/assets/*"
-      ]
+      "@assets/*": ["../public/assets/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/custom.d.ts"],
   "exclude": ["node_modules"]
 }

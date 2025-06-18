@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import AppRouter from "@app/Router";
-import {ErrorPage} from "@view/pages/error/ErrorPage";
+import AppRouter from "./Router";
+import { ErrorPage } from "@view/pages/error/ErrorPage";
 import ErrorBoundary from "@view/pages/error/components/ErrorBoundary";
 
 const App = () => {
