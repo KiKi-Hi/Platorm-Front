@@ -1,23 +1,20 @@
 type IconProps = {
-    className?: string;
+  className?: string;
 };
 
-const NoneIcon = ({ className = 'w-6 h-6 text-gray-500' }: IconProps) => (
-    <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        className={className}
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path
-            d="M4.92893 19.0711C3.05357 17.1957 2 14.6522 2 12C2 9.34784 3.05357 6.8043 4.92893 4.92893C6.8043 3.05357 9.34784 2 12 2C14.6522 2 17.1957 3.05357 19.0711 4.92893C20.9464 6.8043 22 9.34784 22 12C22 14.6522 20.9464 17.1957 19.0711 19.0711C17.1957 20.9464 14.6522 22 12 22C9.34784 22 6.8043 20.9464 4.92893 19.0711Z"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeDasharray="4 4"
-        />
+function NoneIcon({ className = 'w-6 h-6 text-gray-500' }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M4.92893 19.0711C3.05357 17.1957 2 14.6522 2 12C2 9.34784 3.05357 6.8043 4.92893 4.92893C6.8043 3.05357 9.34784 2 12 2C14.6522 2 17.1957 3.05357 19.0711 4.92893C20.9464 6.8043 22 9.34784 22 12C22 14.6522 20.9464 17.1957 19.0711 19.0711C17.1957 20.9464 14.6522 22 12 22C9.34784 22 6.8043 20.9464 4.92893 19.0711Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeDasharray="4 4"
+      />
     </svg>
-);
+  );
+}
 
 export default NoneIcon;

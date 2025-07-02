@@ -1,14 +1,14 @@
 import React from 'react';
 import KeyboardCanvas from '@view/components/keyboard/KeyboardCanvas';
-import StorybookLink from "@view/components/temp/StorybookLink";
+import StorybookLink from '@view/components/temp/StorybookLink';
 
-const KeyboardPage = () => {
-    return (
-        <main className="fixed top-0 left-0 w-screen h-screen bg-gray-900">
-            <KeyboardCanvas />
-            <StorybookLink/>
-        </main>
-    );
-};
+function KeyboardPage() {
+  return (
+    <main className="fixed left-0 top-0 h-screen w-screen bg-gray-900">
+      <KeyboardCanvas />
+      <StorybookLink />
+    </main>
+  );
+}
 
 export default KeyboardPage;

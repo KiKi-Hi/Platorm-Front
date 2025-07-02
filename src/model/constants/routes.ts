@@ -1,17 +1,17 @@
 export enum ROUTES {
-    LOGIN = 'login',
+  LOGIN = 'login',
 
-    HOME = '/',
-    PRODUCT_DETAIL = 'productDetails/:id',
-    CUSTOMIZE_MAIN = 'customize/main',
-    CUSTOMIZE_START = 'customize/start',
-    CUSTOMIZE_INFO = 'customize/info',
+  HOME = '/',
+  PRODUCT_DETAIL = 'productDetails/:id',
+  CUSTOMIZE_MAIN = 'customize/main',
+  CUSTOMIZE_START = 'customize/start',
+  CUSTOMIZE_INFO = 'customize/info',
 
-    CART = 'cart',
-    PAYMENT = 'payment',
-    PAYMENT_COMPLETE = 'payment_complete',
+  CART = 'cart',
+  PAYMENT = 'payment',
+  PAYMENT_COMPLETE = 'payment_complete',
 
-    SEARCH = 'search',
+  SEARCH = 'search',
 
-    STORYBOOK = 'storybook'
+  STORYBOOK = 'storybook',
 }

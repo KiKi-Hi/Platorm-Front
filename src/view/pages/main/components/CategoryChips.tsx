@@ -1,19 +1,32 @@
-import React from 'react'
-const categories = ["하우징", "스위치", "키캡", "악세서리", "케이스"];
+import React from 'react';
 
-const CategoryChips = ({ selected }: { selected: string }) => (
-    <div className="flex gap-4 px-5 py-4">
-        {categories.map((cat) => (
-            <div key={cat} className="flex flex-col items-center">
-                <img className="w-16 h-16 rounded-full border-2 border-Line-ExtraHard-15" src="https://placehold.co/72x72" />
-                <div
-                    className={`text-sm font-medium ${selected === cat ? 'text-Text-Black' : 'text-Text-ExtraLight-15'}`}
-                >
-                    {cat}
-                </div>
-            </div>
-        ))}
+const categories = [
+  { name: '하우징', image: 'House.png' },
+  { name: '스위치', image: 'Switch.png' },
+  { name: '키캡', image: 'Keycap.png' },
+  { name: '악세서리', image: 'Accessories.png' },
+  { name: '케이스', image: 'Case.png' },
+];
+
+function CategoryChips({ selected }: { selected: string }) {
+  return (
+    <div className="flex gap-2.5 px-5 py-4">
+      {categories.map((cat) => (
+        <div key={cat.name} className="flex flex-col items-center">
+          <img
+            className="size-16 rounded-full"
+            src={`/assets/img/category/${cat.image}`}
+            alt={cat.name}
+          />
+          <div
+            className={`text-sm font-medium ${selected === cat.name ? 'text-Text-Black' : 'text-Text-ExtraLight-15'}`}
+          >
+            {cat.name}
+          </div>
+        </div>
+      ))}
     </div>
-);
+  );
+}
 
 export default CategoryChips;

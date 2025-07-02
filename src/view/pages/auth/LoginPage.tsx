@@ -1,20 +1,20 @@
-import React from "react";
-import Logo from "@assets/img/logo/logo.svg";
-import BtnSocialLogin from "./components/BtnSocialLogin";
-import {googleLogin, kakaoLogin} from "@service/feature/auth/authApi";
+import React from 'react';
+import Logo from '@assets/img/logo/logo.svg';
+import { googleLogin, kakaoLogin } from '@service/feature/auth/authApi';
+import BtnSocialLogin from './components/BtnSocialLogin';
 
-const LoginPage = () => {
-    return (
-        <div className="w-full min-h-screen flex flex-col relative">
-            <div className="flex-1 flex items-center justify-center min-h-[40vh]">
-                <Logo />
-            </div>
-            <div className="flex flex-col w-full justify-start items-center gap-4 px-6 absolute bottom-[20%] min-bottom">
-                <BtnSocialLogin type="kakao" onClick={kakaoLogin} />
-                <BtnSocialLogin type="google" onClick={googleLogin} />
-            </div>
-        </div>
-    );
-};
+function LoginPage() {
+  return (
+    <div className="relative flex min-h-screen w-full flex-col">
+      <div className="flex min-h-[40vh] flex-1 items-center justify-center">
+        <Logo />
+      </div>
+      <div className="min-bottom absolute bottom-[20%] flex w-full flex-col items-center justify-start gap-4 px-6">
+        <BtnSocialLogin type="kakao" onClick={kakaoLogin} />
+        <BtnSocialLogin type="google" onClick={googleLogin} />
+      </div>
+    </div>
+  );
+}
 
 export default LoginPage;

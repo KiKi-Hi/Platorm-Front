@@ -1,22 +1,43 @@
-import React from 'react'
+import React from 'react';
+import HomeIcon from '../../components/tokens/icon/nav/HomeIcon';
+import CustomizeIcon from '../../components/tokens/icon/nav/CustomizeIcon';
+import BookmarkIcon from '../../components/tokens/icon/nav/BookmarkIcon';
+import ProfileIcon from '../../components/tokens/icon/nav/ProfileIcon';
 
-const GNB = ({ current }: { current: string }) => (
-    <div className="w-full border-t border-Line-Hard-1 pt-2 pb-7 bg-Fill-White flex justify-between items-center px-2">
-        {['홈', '커스텀', '북마크', '마이페이지'].map((label, idx) => (
-            <div key={label} className="flex-1 flex flex-col items-center">
-                <div className="w-7 h-7 relative">
-                    <div
-                        className={`w-6 h-6 absolute top-1 left-1 ${current === label ? 'outline outline-[1.6px] outline-Icon-Highlight bg-Icon-Highlight50/20' : 'outline outline-[1.6px] outline-Icon-ExtraLight-15'}`}
-                    />
-                </div>
-                <div
-                    className={`text-xs font-semibold text-center ${current === label ? 'text-Text-Highlight' : 'text-Text-ExtraLight-15'}`}
-                >
-                    {label}
-                </div>
-            </div>
-        ))}
+function GNB({ current }: { current: string }) {
+  const navItems = [
+    { label: '홈', icon: HomeIcon },
+    { label: '커스텀', icon: CustomizeIcon },
+    { label: '북마크', icon: BookmarkIcon },
+    { label: '마이페이지', icon: ProfileIcon },
+  ];
+
+  return (
+    <div
+      className="absolute bottom-0 flex w-full items-center justify-between border-t border-Line-Hard-1 bg-Fill-White px-2 pb-7 pt-2"
+      style={{ bottom: 0 }}
+    >
+      {navItems.map(({ label, icon: Icon }) => (
+        <div key={label} className="flex flex-1 flex-col items-center">
+          <div className="relative size-7">
+            <Icon
+              filled={current === label}
+              className={`size-[30px] ${
+                current === label ? 'text-Icon-Highlight' : 'text-Icon-ExtraLight-15'
+              }`}
+            />
+          </div>
+          <div
+            className={`text-center text-xs font-semibold ${
+              current === label ? 'text-Text-Highlight' : 'text-Text-ExtraLight-15'
+            }`}
+          >
+            {label}
+          </div>
+        </div>
+      ))}
     </div>
-);
+  );
+}
 
 export default GNB;
