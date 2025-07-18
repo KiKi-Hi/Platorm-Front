@@ -14,5 +14,5 @@ fi
 # 새 컨테이너 실행
 docker run -d \
     --name $CONTAINER_NAME \
-    -p 80:80 \
+    -p 3000:80 \
     $IMAGE_NAME:latest

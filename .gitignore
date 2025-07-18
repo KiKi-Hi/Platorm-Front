@@ -32,3 +32,5 @@ storybook-static/
 # aws keys
 kikihi-store.pem
 public_key.pub
+
+api-docs
