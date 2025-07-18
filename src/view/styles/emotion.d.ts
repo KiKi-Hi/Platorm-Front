@@ -76,5 +76,12 @@ declare module '@emotion/react' {
             stroke: number;
             nav: number;
         };
+
+        screens: {
+            sm: string;
+            md: string;
+            lg: string;
+            xl: string;
+        }
     }
 }

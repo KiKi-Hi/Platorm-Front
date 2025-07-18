@@ -123,4 +123,11 @@ export const theme: Theme = {
         stroke: 2,
         nav: 0.4,
     },
+
+    screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+    }
 };

@@ -2,16 +2,17 @@
 import React from 'react';
 import { css, useTheme } from '@emotion/react';
 import {HeartIcon} from "@view/components/tokens/icon";
+import {Product} from "../../../../controller/feature/product/type/products";
 
 interface ProductCardProps {
-  brand: string;
-  name: string;
-  price: string;
-  discount: string;
-  size: 'S' | 'L';
+  manufacturerName: string;
+  productName: string;
+  discountedPrice: number;
+  discountRate: number;
+  cardSize: 'S' | 'L';
 }
 
-const sizeStyles = {
+const cardSizeStyles = {
   S: {
     width: '112px',
     height: '96px',
@@ -22,9 +23,9 @@ const sizeStyles = {
   },
 };
 
-export function ProductCard({ brand, name, price, discount, size = 'L' }: ProductCardProps) {
+export function ProductCard({ manufacturerName, productName, discountedPrice, discountRate, cardSize = 'L' }: ProductCardProps) {
   const theme = useTheme();
-  const { width, height } = sizeStyles[size];
+  const { width, height } = cardSizeStyles[cardSize];
 
   const container = css`
     display: flex;
@@ -57,13 +58,13 @@ export function ProductCard({ brand, name, price, discount, size = 'L' }: Produc
     gap: ${theme.spacing[2]};
   `;
 
-  const brandText = css`
+  const manufacturerNameText = css`
     color: ${theme.colors.text.default0};
     font-size: 12px;
     font-weight: 600;
   `;
 
-  const productName = css`
+  const productNameText = css`
     color: ${theme.colors.text.light1};
     font-size: 12px;
     overflow: hidden;
@@ -94,11 +95,11 @@ export function ProductCard({ brand, name, price, discount, size = 'L' }: Produc
           </div>
         </div>
         <div css={textGroup}>
-          <div css={brandText}>{brand}</div>
-          <div css={productName}>{name}</div>
+          <div css={manufacturerNameText}>{manufacturerName}</div>
+          <div css={productNameText}>{productName}</div>
           <div css={priceRow}>
-            <span css={discountText}>{discount}</span>
-            <span css={priceText}>{price}</span>
+            <span css={discountText}>{discountRate}</span>
+            <span css={priceText}>{discountedPrice}</span>
           </div>
         </div>
       </div>
@@ -128,13 +129,13 @@ export function ProductCarousel({ products }: { products: ProductCardProps[] }) 
   return (
       <div css={wrapper}>
         {products.map((product, idx) => (
-            <ProductCard key={idx} {...product} size="S" />
+            <ProductCard key={idx} {...product} cardSize="S" />
         ))}
       </div>
   );
 }
 
-export function ProductGrid({ products }: { products: ProductCardProps[] }) {
+export function ProductGrid({ products }: { products: Product[]; cardSize: 'S' | 'L' }) {
   const theme = useTheme();
 
   const grid = css`
@@ -147,8 +148,9 @@ export function ProductGrid({ products }: { products: ProductCardProps[] }) {
   return (
       <div css={grid}>
         {products.map((product, idx) => (
-            <ProductCard key={idx} {...product} size="L" />
+            <ProductCard key={idx} {...product} cardSize="L" />
         ))}
       </div>
   );
 }
+

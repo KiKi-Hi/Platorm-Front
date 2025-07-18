@@ -1,4 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import React from 'react';
+import { css } from '@emotion/react';
 import KakaoIcon from '@assets/icon/brand/kakao.svg';
 import GoogleIcon from '@assets/icon/brand/google.svg';
 
@@ -10,19 +12,42 @@ interface SocialLoginButtonProps {
 const BtnSocialLogin: React.FC<SocialLoginButtonProps> = ({ type, onClick }) => {
   const isKakao = type === 'kakao';
   const label = isKakao ? '카카오로 로그인' : '구글로 로그인';
-  const bgColor = isKakao ? 'bg-[#FEE500]' : 'bg-white';
-  const textColor = isKakao ? 'text-black' : 'text-black';
+
+  const buttonStyle = css`
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 335px;
+    border-radius: 9999px;
+    background-color: ${isKakao ? '#FEE500' : '#FFFFFF'};
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+  `;
+
+  const iconStyle = css`
+    position: absolute;
+    left: 24px;
+    width: 20px;
+    height: 20px;
+  `;
 
   return (
-    <button
-      onClick={onClick}
-      className={`flex h-[50px] w-[335px] items-center justify-center rounded-full ${bgColor} ${textColor} relative text-[16px] font-medium shadow-sm`}
-      aria-label={label}
-    >
-      <div className="absolute left-[24px] size-5">{isKakao ? <KakaoIcon /> : <GoogleIcon />}</div>
-
-      {label}
-    </button>
+      <button css={buttonStyle} onClick={onClick} aria-label={label}>
+        <div css={iconStyle}>
+          {isKakao ? <KakaoIcon /> : <GoogleIcon />}
+        </div>
+        {label}
+      </button>
   );
 };
 

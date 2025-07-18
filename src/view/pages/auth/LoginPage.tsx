@@ -1,20 +1,50 @@
+/** @jsxImportSource @emotion/react */
 import React from 'react';
+import { css } from '@emotion/react';
 import Logo from '@assets/img/logo/logo.svg';
 import BtnSocialLogin from './components/BtnSocialLogin';
-import {googleLogin, kakaoLogin} from "../../../controller/feature/auth/authApi";
+import { googleLogin, kakaoLogin } from '../../../controller/feature/auth/authApi';
 
 function LoginPage() {
-  return (
-    <div className="relative flex min-h-screen w-full flex-col">
-      <div className="flex min-h-[40vh] flex-1 items-center justify-center">
-        <Logo />
-      </div>
-      <div className="min-bottom absolute bottom-[20%] flex w-full flex-col items-center justify-start gap-4 px-6">
-        <BtnSocialLogin type="kakao" onClick={kakaoLogin} />
-        <BtnSocialLogin type="google" onClick={googleLogin} />
-      </div>
-    </div>
-  );
+    const pageStyle = css`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+  `;
+
+    const logoContainerStyle = css`
+    flex: 1;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `;
+
+    const buttonGroupStyle = css`
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 0 24px;
+  `;
+
+    return (
+        <div css={pageStyle}>
+            <div css={logoContainerStyle}>
+                <Logo />
+            </div>
+            <div css={buttonGroupStyle}>
+                <BtnSocialLogin type="kakao" onClick={kakaoLogin} />
+                <BtnSocialLogin type="google" onClick={googleLogin} />
+            </div>
+        </div>
+    );
 }
 
 export default LoginPage;
