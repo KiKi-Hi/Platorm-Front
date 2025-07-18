@@ -1,4 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import React from 'react';
+import { css, useTheme } from '@emotion/react';
 
 const categories = [
   { name: '하우징', image: 'House.png' },
@@ -9,23 +11,48 @@ const categories = [
 ];
 
 function CategoryChips({ selected }: { selected: string }) {
+  const theme = useTheme();
+
+  const containerStyle = css`
+    display: flex;
+    gap: ${theme.spacing[10]};
+    padding: ${theme.spacing[16]} ${theme.spacing[20]};
+  `;
+
+  const chipStyle = css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `;
+
+  const imageStyle = css`
+    width: 64px; /* size-16: 16 * 4px */
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+  `;
+
+  const textStyle = (isSelected: boolean) => css`
+    margin-top: ${theme.spacing[6]};
+    font-size: 14px; /* text-sm */
+    font-weight: 500; /* font-medium */
+    color: ${isSelected ? theme.colors.text.black : theme.colors.text.extraLight15};
+    text-align: center;
+  `;
+
   return (
-    <div className="flex gap-2.5 px-5 py-4">
-      {categories.map((cat) => (
-        <div key={cat.name} className="flex flex-col items-center">
-          <img
-            className="size-16 rounded-full"
-            src={`/assets/img/category/${cat.image}`}
-            alt={cat.name}
-          />
-          <div
-            className={`text-sm font-medium ${selected === cat.name ? 'text-Text-Black' : 'text-Text-ExtraLight-15'}`}
-          >
-            {cat.name}
-          </div>
-        </div>
-      ))}
-    </div>
+      <div css={containerStyle}>
+        {categories.map((cat) => (
+            <div key={cat.name} css={chipStyle}>
+              <img
+                  css={imageStyle}
+                  src={`/assets/img/category/${cat.image}`}
+                  alt={cat.name}
+              />
+              <div css={textStyle(selected === cat.name)}>{cat.name}</div>
+            </div>
+        ))}
+      </div>
   );
 }
 

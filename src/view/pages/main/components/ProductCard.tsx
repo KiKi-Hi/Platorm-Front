@@ -1,49 +1,154 @@
+/** @jsxImportSource @emotion/react */
 import React from 'react';
+import { css, useTheme } from '@emotion/react';
+import {HeartIcon} from "@view/components/tokens/icon";
 
 interface ProductCardProps {
   brand: string;
   name: string;
   price: string;
   discount: string;
-  size?: 'S' | 'L';
+  size: 'S' | 'L';
 }
 
+const sizeStyles = {
+  S: {
+    width: '112px',
+    height: '96px',
+  },
+  L: {
+    width: '160px',
+    height: '144px',
+  },
+};
+
 export function ProductCard({ brand, name, price, discount, size = 'L' }: ProductCardProps) {
-  const width = size === 'S' ? 'w-28' : 'w-40';
-  const height = size === 'S' ? 'h-24' : 'h-36';
+  const theme = useTheme();
+  const { width, height } = sizeStyles[size];
+
+  const container = css`
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.spacing[8]};
+    width: ${width};
+    flex-shrink: 0;
+  `;
+
+  const imageBox = css`
+    width: ${width};
+    height: ${height};
+    background-color: ${theme.colors.fill.extraLight};
+    border-radius: ${theme.radius.m};
+    position: relative;
+    overflow: hidden;
+  `;
+
+  const heartIndicator = css`
+    position: absolute;
+    bottom: ${theme.spacing[8]};
+    right: ${theme.spacing[8]};
+    width: 24px;
+    height: 24px;
+  `;
+
+  const textGroup = css`
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.spacing[2]};
+  `;
+
+  const brandText = css`
+    color: ${theme.colors.text.default0};
+    font-size: 12px;
+    font-weight: 600;
+  `;
+
+  const productName = css`
+    color: ${theme.colors.text.light1};
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  `;
+
+  const priceRow = css`
+    display: flex;
+    gap: ${theme.spacing[4]};
+    font-size: 14px;
+    font-weight: bold;
+  `;
+
+  const discountText = css`
+    color: ${theme.colors.text.highlight};
+  `;
+
+  const priceText = css`
+    color: ${theme.colors.text.default0};
+  `;
+
   return (
-    <div className={`${width} flex flex-col gap-2`}>
-      <div className={`${width} ${height} bg-Fill-ExtraLight relative rounded`}>
-        <div className="absolute bottom-2 right-2 size-6 rounded-full bg-white shadow" />
-      </div>
-      <div className="flex flex-col gap-0.5">
-        <div className="text-Text-Default-0 text-xs font-semibold">{brand}</div>
-        <div className="text-Text-Light-1 truncate text-xs">{name}</div>
-        <div className="flex gap-1 text-sm font-bold">
-          <span className="text-Text-Highlight">{discount}</span>
-          <span className="text-Text-Default-0">{price}</span>
+      <div css={container}>
+        <div css={imageBox}>
+          <div css={heartIndicator} >
+            <HeartIcon />
+          </div>
+        </div>
+        <div css={textGroup}>
+          <div css={brandText}>{brand}</div>
+          <div css={productName}>{name}</div>
+          <div css={priceRow}>
+            <span css={discountText}>{discount}</span>
+            <span css={priceText}>{price}</span>
+          </div>
         </div>
       </div>
-    </div>
   );
 }
 
 export function ProductCarousel({ products }: { products: ProductCardProps[] }) {
+  const theme = useTheme();
+
+  const wrapper = css`
+    display: flex;
+    gap: ${theme.spacing[10]};
+    overflow-x: auto;
+    padding: ${theme.spacing[8]} ${theme.spacing[20]};
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    & > * {
+      scroll-snap-align: start;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  `;
+
   return (
-    <div className="flex gap-2.5 overflow-x-auto px-5 py-2">
-      {products.map((product, idx) => (
-        <ProductCard key={idx} {...product} size="S" />
-      ))}
-    </div>
+      <div css={wrapper}>
+        {products.map((product, idx) => (
+            <ProductCard key={idx} {...product} size="S" />
+        ))}
+      </div>
   );
 }
 
 export function ProductGrid({ products }: { products: ProductCardProps[] }) {
+  const theme = useTheme();
+
+  const grid = css`
+    display: flex;
+    flex-wrap: wrap;
+    gap: ${theme.spacing[6]};
+    padding: ${theme.spacing[8]} ${theme.spacing[20]};
+  `;
+
   return (
-    <div className="flex flex-wrap gap-1.5 px-5 py-2">
-      {products.map((product, idx) => (
-        <ProductCard key={idx} {...product} size="L" />
-      ))}
-    </div>
+      <div css={grid}>
+        {products.map((product, idx) => (
+            <ProductCard key={idx} {...product} size="L" />
+        ))}
+      </div>
   );
 }

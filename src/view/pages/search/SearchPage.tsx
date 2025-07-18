@@ -1,6 +1,6 @@
 function SearchPage() {
   return (
-    <>
+    <div>
       <div className="relative h-[812px] w-96 overflow-hidden bg-white">
         <div className="absolute left-0 top-[44px] inline-flex flex-col items-start justify-start">
           <div
@@ -1331,7 +1331,7 @@ function SearchPage() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

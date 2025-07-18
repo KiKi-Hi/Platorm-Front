@@ -29,9 +29,6 @@ storybook-static/
 # Webpack cache
 .cache/
 
-# Tailwind CSS
-tailwind.config.js
-
 # aws keys
-kiki-hi.pem
+kikihi-store.pem
 public_key.pub

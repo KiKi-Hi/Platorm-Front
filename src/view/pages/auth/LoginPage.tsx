@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '@assets/img/logo/logo.svg';
-import { googleLogin, kakaoLogin } from '@service/feature/auth/authApi';
 import BtnSocialLogin from './components/BtnSocialLogin';
+import {googleLogin, kakaoLogin} from "../../../controller/feature/auth/authApi";
 
 function LoginPage() {
   return (
