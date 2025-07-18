@@ -13,10 +13,7 @@ export interface ApiResponse<T> {
 const baseURL = process.env.REACT_APP_BASE_URL;
 if (!baseURL) throw new Error('Missing REACT_APP_BASE_URL');
 
-export const api = axios.create({
-  baseURL,
-  withCredentials: true,
-});
+export const api = axios.create({baseURL});
 
 api.interceptors.request.use(
   (config) => {

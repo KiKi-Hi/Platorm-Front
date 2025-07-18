@@ -26,7 +26,6 @@ const GNB = ({ current }: GNBProps) => {
     position: fixed;
     bottom: 0;
     width: 100%;
-    max-width: 640px;
     display: flex;
     justify-content: space-between;
     background-color: ${theme.colors.fill.white};

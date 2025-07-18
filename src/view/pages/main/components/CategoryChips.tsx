@@ -17,6 +17,7 @@ function CategoryChips({ selected }: { selected: string }) {
     display: flex;
     gap: ${theme.spacing[10]};
     padding: ${theme.spacing[16]} ${theme.spacing[20]};
+    justify-content: space-evenly;
   `;
 
   const chipStyle = css`
@@ -26,7 +27,7 @@ function CategoryChips({ selected }: { selected: string }) {
   `;
 
   const imageStyle = css`
-    width: 64px; /* size-16: 16 * 4px */
+    width: 64px;
     height: 64px;
     border-radius: 50%;
     overflow: hidden;

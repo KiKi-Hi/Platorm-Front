@@ -2,6 +2,8 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { css, useTheme } from '@emotion/react';
+import GNB from "@view/layout/elements/GNB";
+import TopBar from './elements/TopBar';
 
 function BaseLayout() {
     const theme = useTheme();
@@ -19,16 +21,14 @@ function BaseLayout() {
     max-width: ${theme.screens.xl};
     margin: 0 auto;
     background-color: ${!isLoginPage ? theme.colors.fill.white : 'transparent'};
-    ${!isLoginPage &&
-    `
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    `}
   `;
 
     return (
         <div css={outerStyle}>
             <div css={innerStyle}>
-                <Outlet />
+                {!isLoginPage && <TopBar/>}
+                <Outlet/>
+                {!isLoginPage && <GNB current="home"/>}
             </div>
         </div>
     );

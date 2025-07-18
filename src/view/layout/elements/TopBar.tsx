@@ -2,9 +2,9 @@
 import React from 'react';
 import { css, useTheme } from '@emotion/react';
 import TopLogo from '@assets/img/logo/topbar-logo.svg';
-import SearchIcon from '@assets/icon/menu/search.svg';
-import CartIcon from '@assets/icon/menu/cart.svg';
-import MenuIcon from '@assets/icon/menu/menu.svg';
+import SearchIcon from '@assets/icons/menu/search.svg';
+import CartIcon from '@assets/icons/menu/cart.svg';
+import MenuIcon from '@assets/icons/menu/menu.svg';
 
 const containerStyle = css`
   position: sticky;
@@ -15,26 +15,27 @@ const containerStyle = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 20px;
 `;
 
 const logoWrapperStyle = css`
   position: relative;
-  height: 1.25rem; /* 5 * 0.25rem */
-  width: 5rem;     /* 20 * 0.25rem */
+  height: 1.25rem;
+  width: 5rem;
 `;
 
 const iconGroupStyle = css`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 1rem; /* 4 * 0.25rem */
+  gap: 1rem;
 `;
 
 const iconWrapperStyle = css`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.625rem; /* 2.5 * 0.25rem */
+  gap: 0.625rem;
 `;
 
 const iconStyle = css`

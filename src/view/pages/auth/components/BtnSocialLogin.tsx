@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import { css } from '@emotion/react';
-import KakaoIcon from '@assets/icon/brand/kakao.svg';
-import GoogleIcon from '@assets/icon/brand/google.svg';
+import KakaoIcon from '@assets/icons/brand/kakao.svg';
+import GoogleIcon from '@assets/icons/brand/google.svg';
 
 interface SocialLoginButtonProps {
   type: 'kakao' | 'google';
