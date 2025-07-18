@@ -13,14 +13,14 @@ import CartPage from '@view/pages/cart/CartPage';
 import PaymentCompletePage from '@view/pages/payment/PaymentCompletePage';
 import PaymentPage from '@view/pages/payment/PaymentPage';
 import { HomePage } from '@view/pages/main/HomePage';
-import { ErrorPage } from '@view/pages/error/ErrorPage';
+import { ErrorAlert } from '@view/pages/error/ErrorAlert';
 import { ROUTES } from '../model/constants/routes';
 
 const AppRouter: RouteObject[] = [
   {
     path: '/',
     element: <BaseLayout />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorAlert />,
     children: [
       { path: ROUTES.LOGIN, element: <LoginPage /> },
       { path: ROUTES.HOME, element: <HomePage /> },

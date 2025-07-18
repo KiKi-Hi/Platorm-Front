@@ -7,7 +7,7 @@ import BannerSlider from './components/BannerSlider';
 import {ProductCarouselSection} from "@view/pages/main/components/ProductCarouselSection";
 import {useProductsInfiniteQuery} from "../../../controller/feature/product/useProduct";
 import {Category} from "../../../controller/feature/product/constant/category";
-import ErrorPage from '../error/ErrorPage';
+import ErrorAlert from '../error/ErrorAlert';
 
 const containerStyle = css`
     position: relative;
@@ -60,7 +60,7 @@ export function HomePage() {
             {isLoading ? (
                 <div>로딩 중...</div>
             ) : isError ? (
-                <ErrorPage/>
+                <ErrorAlert/>
             ) : (
                 <ProductGrid products={products} cardSize='L'/>
             )}

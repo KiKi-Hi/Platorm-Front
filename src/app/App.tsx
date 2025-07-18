@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ErrorPage } from '@view/pages/error/ErrorPage';
-import ErrorBoundary from '@view/pages/error/components/ErrorBoundary';
 import AppRouter from './Router';
 import {QueryClient, QueryClientProvider} from "react-query";
+import {Provider} from "react-redux";
+import store from "@app/store";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -21,9 +21,9 @@ function App() {
   const router = createBrowserRouter(AppRouter);
   return (
       <QueryClientProvider client={queryClient}>
-          <ErrorBoundary fallback={<ErrorPage />}>
-              <RouterProvider router={router} />
-          </ErrorBoundary>
+          <Provider store={store}>
+          <RouterProvider router={router} />
+          </Provider>
       </QueryClientProvider>
   );
 }

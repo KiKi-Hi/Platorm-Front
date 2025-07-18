@@ -4,11 +4,22 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { css, useTheme } from '@emotion/react';
 import GNB from "@view/layout/elements/GNB";
 import TopBar from './elements/TopBar';
+import {useDispatch} from "react-redux";
+import { clearError } from 'controller/feature/error/store/errorSlice';
+import ErrorAlert from "@view/pages/error/ErrorAlert";
+import {useAppSelector} from "@app/store/hook";
 
 function BaseLayout() {
     const theme = useTheme();
     const location = useLocation();
+    const dispatch = useDispatch();
+    const { hasError, errorMessage } = useAppSelector((state) => state.error);
     const isLoginPage = location.pathname === '/login';
+
+    const dismissError = () => {
+        dispatch(clearError());
+    };
+
 
     const outerStyle = css`
     min-height: 100vh;
@@ -26,6 +37,7 @@ function BaseLayout() {
     return (
         <div css={outerStyle}>
             <div css={innerStyle}>
+                {hasError && <ErrorAlert message={errorMessage} onDismiss={dismissError} />}
                 {!isLoginPage && <TopBar/>}
                 <Outlet/>
                 {!isLoginPage && <GNB current="home"/>}

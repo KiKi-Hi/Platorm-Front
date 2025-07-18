@@ -38,6 +38,7 @@ const GlobalStyles = () => {
         button {
           all: unset;
           cursor: pointer;
+            text-align: center;
         }
 
         ul,
