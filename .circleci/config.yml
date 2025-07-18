@@ -10,26 +10,43 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      - run:
+          name: Set Docker image tag
+          command: |
+            echo 'export IMAGE_TAG=$(date +'%Y%m%d')-${CIRCLE_SHA1:0:7}' >> $BASH_ENV
+      - run:
+          name: Show Docker tag
+          command: |
+            echo "Docker tag to be used: $IMAGE_TAG"
       - docker/check
       - docker/build:
           image: $DOCKER_IMAGE_NAME
           tag: latest
+      - docker/build:
+          image: $DOCKER_IMAGE_NAME
+          tag: << pipeline.parameters.IMAGE_TAG >>
       - docker/push:
           image: $DOCKER_IMAGE_NAME
           tag: latest
-          
+      - docker/push:
+          image: $DOCKER_IMAGE_NAME
+          tag: << pipeline.parameters.IMAGE_TAG >>
+
   deploy:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
+
       - add_ssh_keys:
           fingerprints:
             - "${SSH_KEY_FINGERPRINT}"
+
       - run:
           name: Deploy to EC2
           command: |
-            ssh -o StrictHostKeyChecking=no ubuntu@${EC2_HOST} 'bash -s' < ./deploy.sh
+            ssh -o StrictHostKeyChecking=no ubuntu@${EC2_HOST} \
+              "IMAGE_TAG=${IMAGE_TAG} bash -s" < ./deploy.sh
 
 workflows:
   version: 2
