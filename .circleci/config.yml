@@ -24,13 +24,13 @@ jobs:
           tag: latest
       - docker/build:
           image: $DOCKER_IMAGE_NAME
-          tag: << pipeline.parameters.IMAGE_TAG >>
+          tag: $IMAGE_TAG
       - docker/push:
           image: $DOCKER_IMAGE_NAME
           tag: latest
       - docker/push:
           image: $DOCKER_IMAGE_NAME
-          tag: << pipeline.parameters.IMAGE_TAG >>
+          tag: $IMAGE_TAG
 
   deploy:
     docker:
