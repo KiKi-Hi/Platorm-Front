@@ -7,3 +7,7 @@ export const googleLogin = async () => {
 export const kakaoLogin = async () => {
   await api.post('https://api.kikihi.store/oauth2/authorization/kakao');
 };
+
+export const logout = async () => {
+  await api.post('https://api.kikihi.store/api/v1/auth/logout');
+};

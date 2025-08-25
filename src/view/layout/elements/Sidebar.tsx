@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
+import {logout} from "../../../controller/feature/auth/authApi";
 
 type SidebarProps = {
     isVisible: boolean;
@@ -46,7 +47,7 @@ const Container = styled.aside<{ isVisible: boolean }>`
     //max-width: 375px;
     height: 100vh;
     background: #fff;
-    z-index: 1004;
+    z-index: 10004;
     overflow: hidden;
     animation: ${({ isVisible }) => (isVisible ? slideIn : slideOut)} 300ms ease-out forwards;
 `;
@@ -176,8 +177,56 @@ const FooterText = styled.span`
     text-align: center;
 `;
 
+declare global {
+    interface WindowEventMap {
+        beforeinstallprompt: BeforeInstallPromptEvent;
+    }
+}
+
 export const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
     const categories = ["키보드", "하우징", "스위치", "키캡", "악세서리", "케이스"];
+    const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+
+    useEffect(() => {
+        const handleBeforeInstallPrompt = (e: BeforeInstallPromptEvent) => {
+            e.preventDefault();
+            setDeferredPrompt(e);
+        };
+
+        window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
+        return () => {
+            window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+        };
+    }, []);
+
+    const handlePWAInstall = async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const choiceResult = await deferredPrompt.userChoice;
+
+            if (choiceResult.outcome === "accepted") {
+                console.log("PWA 설치 완료");
+                alert("홈화면에 추가되었습니다!");
+            } else {
+                console.log("PWA 설치 취소");
+            }
+            setDeferredPrompt(null);
+        } else {
+            alert("PWA를 추가할 준비가 되지 않았습니다.");
+        }
+    };
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            alert("로그아웃 되었습니다.");
+            window.location.href = "/";
+        } catch (error) {
+            console.error("로그아웃 실패:", error);
+            alert("로그아웃에 실패했습니다. 다시 시도해주세요.");
+        }
+    };
 
     return (
         <>
@@ -207,12 +256,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
                 </Main>
 
                 <Footer>
-                    <FooterText>홈화면에 추가</FooterText>
-                    <FooterText>로그아웃</FooterText>
+                    <FooterText onClick={handlePWAInstall}>홈화면에 추가</FooterText>
+                    <FooterText onClick={handleLogout}>로그아웃</FooterText>
                 </Footer>
             </Container>
         </>
     );
 };
-
-export default Sidebar;

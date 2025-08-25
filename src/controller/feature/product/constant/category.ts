@@ -1,7 +1,8 @@
 export enum Category {
     ACCESSORIES = 'accessories',
     CASE = 'case',
-    HOUSE = 'house',
+    HOUSING = 'housing',
     KEYCAP = 'keycap',
-    SWITCH = 'switch'
+    SWITCH = 'switch',
+    KEYBOARD = 'keyboard',
 }

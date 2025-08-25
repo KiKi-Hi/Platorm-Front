@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { css, Global } from '@emotion/react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
+import {css, Global} from '@emotion/react';
 import CategoryChips from './components/CategoryChips';
-import { ProductGrid } from './components/ProductCard';
+import {ProductGrid} from './components/ProductCard';
 import BannerSlider from './components/BannerSlider';
-import { useProductsInfiniteQuery } from "../../../controller/feature/product/api/useProduct";
-import { Category } from "../../../controller/feature/product/constant/category";
+import {useProductsInfiniteQuery} from "../../../controller/feature/product/api/useProduct";
+import {Category} from "../../../controller/feature/product/constant/category";
 import ErrorAlert from '../error/ErrorAlert';
-import { RecommendationsSection } from "@view/pages/main/components/RecommendationSection";
+import {RecommendationsSection} from "@view/pages/main/components/RecommendationSection";
 
 const containerStyle = css`
     position: relative;
@@ -54,9 +54,11 @@ const bottomSentinelStyle = css`
 `;
 
 export const HomePage = () => {
+    const [selectedCategory, setSelectedCategory] = useState<Category>(Category.KEYCAP);
+
     const { data, fetchNextPage, hasNextPage, isError, isLoading } = useProductsInfiniteQuery({
         size: 20,
-        category: Category.KEYCAP,
+        category: selectedCategory,
     });
 
     const observerRef = useRef<HTMLDivElement | null>(null);
@@ -119,6 +121,24 @@ export const HomePage = () => {
         [data]
     );
 
+    const categoryMap: Record<string, Category> = {
+        키캡: Category.KEYCAP,
+        하우징: Category.HOUSING,
+        스위치: Category.SWITCH,
+        키보드: Category.KEYBOARD,
+        악세사리: Category.ACCESSORIES,
+        케이스: Category.CASE
+    };
+
+    const handleCategoryChange = (category: string) => {
+        const mappedCategory = categoryMap[category];
+        if (mappedCategory) {
+            setSelectedCategory(mappedCategory);
+        } else {
+            console.error(`Unknown category: ${category}`);
+        }
+    };
+
     return (
         <div css={containerStyle}>
             <Global styles={css`
@@ -145,7 +165,7 @@ export const HomePage = () => {
                     phase === 'enter' && chipsAffixEnter,
                 ]}
             >
-                <CategoryChips selected="하우징" />
+                <CategoryChips selected={selectedCategory} onChange={handleCategoryChange} />
             </div>
 
             {isLoading ? (

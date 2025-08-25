@@ -11,3 +11,8 @@ declare module '*.svg?react' {
   const Component: React.FC<React.SVGProps<SVGSVGElement>>;
   export default Component;
 }
+
+interface BeforeInstallPromptEvent extends Event {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
+}

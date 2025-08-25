@@ -4,8 +4,6 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    'airbnb',
-    'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
@@ -24,7 +22,6 @@ module.exports = {
     '@typescript-eslint',
     'react-hooks',
     'prettier',
-    'tailwindcss', // ✅ 추가
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
