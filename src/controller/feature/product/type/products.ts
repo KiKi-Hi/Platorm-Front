@@ -11,6 +11,19 @@ interface Product {
     likedByMe: boolean;
 }
 
+export interface ProductDetail {
+    id: string;
+    thumbnail: string;
+    manufacturerName: string | null;
+    category: string;
+    productName: string;
+    originalPrice: string;
+    likedByMe: boolean;
+    cautions: string;
+    options: string[];
+    imageUrl: string[];
+}
+
 interface ProductResponse {
     content: Product[];
     hasNext: boolean;

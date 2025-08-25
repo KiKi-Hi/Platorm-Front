@@ -22,8 +22,9 @@ function BaseLayout() {
 
 
     const outerStyle = css`
-    min-height: 100vh;
-    background-color: ${isLoginPage ? '#333237' : theme.colors.fill.white};
+        min-height: 100vh;
+        width: 100%;
+        background-color: ${isLoginPage ? '#333237' : theme.colors.fill.white};
   `;
 
     const innerStyle = css`
@@ -38,7 +39,7 @@ function BaseLayout() {
         <div css={outerStyle}>
             <div css={innerStyle}>
                 {hasError && <ErrorAlert message={errorMessage} onDismiss={dismissError} />}
-                {!isLoginPage && <TopBar/>}
+                {!isLoginPage && <TopBar />}
                 <Outlet/>
                 {!isLoginPage && <GNB current="home"/>}
             </div>

@@ -15,16 +15,18 @@ import PaymentPage from '@view/pages/payment/PaymentPage';
 import { HomePage } from '@view/pages/main/HomePage';
 import { ErrorAlert } from '@view/pages/error/ErrorAlert';
 import { ROUTES } from '../model/constants/routes';
+import DetailLayout from "@view/layout/DetailLayout";
 
 const AppRouter: RouteObject[] = [
   {
     path: '/',
     element: <BaseLayout />,
-    errorElement: <ErrorAlert />,
+    errorElement: <ErrorAlert message={null} onDismiss={function(): void {
+        throw new Error('Function not implemented.');
+    } } />,
     children: [
       { path: ROUTES.LOGIN, element: <LoginPage /> },
       { path: ROUTES.HOME, element: <HomePage /> },
-      { path: ROUTES.PRODUCT_DETAIL, element: <ProductDetailPage /> },
       { path: ROUTES.CUSTOMIZE_MAIN, element: <CustomizeMainPage /> },
       { path: ROUTES.CUSTOMIZE_START, element: <CustomizeStartPage /> },
       { path: ROUTES.CUSTOMIZE_INFO, element: <CustomizeInfoPage /> },
@@ -33,6 +35,16 @@ const AppRouter: RouteObject[] = [
       { path: ROUTES.PAYMENT_COMPLETE, element: <PaymentCompletePage /> },
       { path: ROUTES.SEARCH, element: <SearchPage /> },
     ],
+  },
+  {
+    path: 'product',
+    element: <DetailLayout/>,
+    errorElement: <ErrorAlert message={null} onDismiss={function(): void {
+      throw new Error('Function not implemented.');
+    } } />,
+    children: [
+      { path: ROUTES.PRODUCT_DETAIL, element: <ProductDetailPage /> },
+    ]
   },
   {
     path: ROUTES.STORYBOOK,

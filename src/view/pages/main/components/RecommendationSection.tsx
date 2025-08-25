@@ -52,7 +52,7 @@ export const RecommendationsSection = () => {
                         discountedPrice={product.discountedPrice || ''}
                         thumbnail={product.thumbnail}
                         liked={product.likedByMe}
-                        cardSize="L"
+                        cardSize="L" id={''}
                     />
                 ))}
             </div>

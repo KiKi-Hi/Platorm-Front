@@ -2,7 +2,7 @@ export enum ROUTES {
   LOGIN = 'login',
 
   HOME = '/',
-  PRODUCT_DETAIL = 'productDetails/:id',
+  PRODUCT_DETAIL = '/product/:id',
   CUSTOMIZE_MAIN = 'customize/main',
   CUSTOMIZE_START = 'customize/start',
   CUSTOMIZE_INFO = 'customize/info',

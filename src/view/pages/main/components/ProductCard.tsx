@@ -3,8 +3,10 @@ import React from 'react';
 import { css, useTheme } from '@emotion/react';
 import {HeartIcon} from "@view/components/tokens/icon";
 import {Product} from "../../../../controller/feature/product/type/products";
+import {useNavigate} from "react-router-dom";
 
 interface ProductCardProps {
+  id: string
   manufacturerName: string | null;
   productName: string;
   discountedPrice: string;
@@ -24,9 +26,15 @@ const cardSizeStyles = {
   },
 };
 
-export function ProductCard({ thumbnail, manufacturerName, productName, discountedPrice, cardSize = 'L' }: ProductCardProps) {
+export function ProductCard({ id, thumbnail, manufacturerName, productName, discountedPrice, cardSize = 'L' }: ProductCardProps) {
   const theme = useTheme();
   const { width, height } = cardSizeStyles[cardSize];
+  const navigate = useNavigate();
+
+
+  const handleCardClick = () => {
+    navigate(`/product/${id}`);
+  };
 
   const container = css`
     display: flex;
@@ -89,7 +97,7 @@ export function ProductCard({ thumbnail, manufacturerName, productName, discount
   `;
 
   return (
-      <div css={container}>
+      <div css={container} onClick={handleCardClick}>
         <div css={imageBox}>
           <img
               src={thumbnail}

@@ -18,6 +18,7 @@ function CategoryChips({ selected }: { selected: string }) {
     gap: ${theme.spacing[10]};
     padding: ${theme.spacing[16]} ${theme.spacing[20]};
     justify-content: space-evenly;
+    z-index: 1005;
   `;
 
   const chipStyle = css`

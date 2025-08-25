@@ -6,6 +6,32 @@ import SearchIcon from "@assets/icons/menu/search.svg";
 import CartIcon from "@assets/icons/menu/cart.svg";
 import MenuIcon from "@assets/icons/menu/menu.svg";
 import { Sidebar } from "./Sidebar";
+import {useLocation} from "react-router-dom";
+
+const ProductLogo = () => (
+    <svg
+        width="22"
+        height="22"
+        viewBox="0 0 22 22"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <g clipPath="url(#clip0_2013_4714)">
+            <path
+                d="M1 10.6667H21.5M1 10.6667L7.66667 17.3333M1 10.6667L7.66667 4"
+                stroke="#323237"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </g>
+        <defs>
+            <clipPath id="clip0_2013_4714">
+                <rect width="22" height="22" fill="white" />
+            </clipPath>
+        </defs>
+    </svg>
+);
 
 const containerStyle = css`
     position: sticky;
@@ -43,6 +69,9 @@ const iconStyle = css`
 `;
 
 function TopBar() {
+    const location = useLocation();
+    const isProductPage = location.pathname.includes("product");
+
     const [isSidebarVisible, setSidebarVisible] = useState(false);
 
     const handleMenuClick = () => {
@@ -57,7 +86,7 @@ function TopBar() {
         <>
             <div css={containerStyle}>
                 <div css={logoWrapperStyle}>
-                    <TopLogo />
+                    {isProductPage ? <ProductLogo /> : <TopLogo />}
                 </div>
                 <div css={iconGroupStyle}>
                     <div css={iconStyle}>
