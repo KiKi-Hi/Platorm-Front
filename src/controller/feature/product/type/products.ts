@@ -7,7 +7,7 @@ interface Product {
     manufacturerName: string;
     productName: string;
     discountRate: number;
-    discountedPrice: number;
+    discountedPrice: string;
     likedByMe: boolean;
 }
 

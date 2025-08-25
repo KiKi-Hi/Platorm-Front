@@ -5,10 +5,11 @@ import {HeartIcon} from "@view/components/tokens/icon";
 import {Product} from "../../../../controller/feature/product/type/products";
 
 interface ProductCardProps {
-  manufacturerName: string;
+  manufacturerName: string | null;
   productName: string;
-  discountedPrice: number;
-  discountRate: number;
+  discountedPrice: string;
+  thumbnail: string;
+  liked?: boolean;
   cardSize: 'S' | 'L';
 }
 
@@ -23,7 +24,7 @@ const cardSizeStyles = {
   },
 };
 
-export function ProductCard({ manufacturerName, productName, discountedPrice, discountRate, cardSize = 'L' }: ProductCardProps) {
+export function ProductCard({ thumbnail, manufacturerName, productName, discountedPrice, cardSize = 'L' }: ProductCardProps) {
   const theme = useTheme();
   const { width, height } = cardSizeStyles[cardSize];
 
@@ -90,6 +91,15 @@ export function ProductCard({ manufacturerName, productName, discountedPrice, di
   return (
       <div css={container}>
         <div css={imageBox}>
+          <img
+              src={thumbnail}
+              alt={productName}
+              css={css`
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        `}
+          />
           <div css={heartIndicator} >
             <HeartIcon />
           </div>
@@ -98,7 +108,6 @@ export function ProductCard({ manufacturerName, productName, discountedPrice, di
           <div css={manufacturerNameText}>{manufacturerName}</div>
           <div css={productNameText}>{productName}</div>
           <div css={priceRow}>
-            <span css={discountText}>{discountRate}</span>
             <span css={priceText}>{discountedPrice}</span>
           </div>
         </div>
@@ -135,20 +144,40 @@ export function ProductCarousel({ products }: { products: ProductCardProps[] }) 
   );
 }
 
-export function ProductGrid({ products }: { products: Product[]; cardSize: 'S' | 'L' }) {
+export function ProductGrid({products}: { products: Product[]; cardSize: 'S' | 'L' }) {
   const theme = useTheme();
 
   const grid = css`
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fit, 160px);
     gap: ${theme.spacing[6]};
     padding: ${theme.spacing[8]} ${theme.spacing[20]};
+    max-width: calc(160px * 5 + ${theme.spacing[6]} * 4);
+    margin: 0 auto;
+    justify-content: center;
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(2, 160px);
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      grid-template-columns: repeat(3, 160px);
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      grid-template-columns: repeat(4, 160px);
+    }
+
+    @media (min-width: 1025px) {
+      grid-template-columns: repeat(5, 160px);
+    }
   `;
 
   return (
       <div css={grid}>
         {products.map((product, idx) => (
-            <ProductCard key={idx} {...product} cardSize="L" />
+            <ProductCard key={idx} {...product} cardSize="L"/>
         ))}
       </div>
   );

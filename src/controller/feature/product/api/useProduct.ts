@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from 'react-query';
-import { api } from '../../api/axiosInstance';
-import { ProductResponse, UseProductsParams } from './type/products';
-import {Category} from "./constant/category";
+import { api } from '../../../api/axiosInstance';
+import { ProductResponse, UseProductsParams } from '../type/products';
+import {Category} from "../constant/category";
 
 const fetchInfiniteProducts = async ({ pageParam = 1, queryKey }: any): Promise<ProductResponse> => {
   const params = queryKey[1];
@@ -38,3 +38,4 @@ export const useProductsInfiniteQuery = (params: {
     }
   );
 };
+

@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import React, {useEffect, useRef} from 'react';
-import {css} from '@emotion/react';
+import React, { useEffect, useRef } from 'react';
+import { css } from '@emotion/react';
 import CategoryChips from './components/CategoryChips';
-import {ProductGrid} from './components/ProductCard';
+import { ProductGrid } from './components/ProductCard';
 import BannerSlider from './components/BannerSlider';
-import {ProductCarouselSection} from "@view/pages/main/components/ProductCarouselSection";
-import {useProductsInfiniteQuery} from "../../../controller/feature/product/useProduct";
-import {Category} from "../../../controller/feature/product/constant/category";
+import { useProductsInfiniteQuery } from "../../../controller/feature/product/api/useProduct";
+import { Category } from "../../../controller/feature/product/constant/category";
 import ErrorAlert from '../error/ErrorAlert';
+import {RecommendationsSection} from "@view/pages/main/components/RecommendationSection";
 
 const containerStyle = css`
     position: relative;
@@ -17,18 +17,10 @@ const containerStyle = css`
     background-color: #ffffff;
 `;
 
-const dummyProducts = new Array(5).fill(0).map((_, idx) => ({
-    brand: '제조사명',
-    name: `제품명 ${idx + 1}`,
-    price: '00,000',
-    discount: '00%',
-    size: 'L' as 'L',
-}));
-
-export function HomePage() {
-    const {data, fetchNextPage, hasNextPage, isError, isLoading} = useProductsInfiniteQuery({
+export const HomePage = () => {
+    const { data, fetchNextPage, hasNextPage, isError, isLoading } = useProductsInfiniteQuery({
         size: 20,
-        category: Category.KEYCAP
+        category: Category.KEYCAP,
     });
 
     const observerRef = useRef<HTMLDivElement | null>(null);
@@ -40,7 +32,7 @@ export function HomePage() {
                     fetchNextPage();
                 }
             },
-            {threshold: 1.0}
+            { threshold: 1.0 }
         );
 
         if (observerRef.current) observer.observe(observerRef.current);
@@ -54,17 +46,19 @@ export function HomePage() {
 
     return (
         <div css={containerStyle}>
-            <BannerSlider/>
-            <ProductCarouselSection products={dummyProducts} title={'추천 상품을 한눈에'}/>
-            <CategoryChips selected="하우징"/>
+            <BannerSlider />
+            <RecommendationsSection />
+            <CategoryChips selected="하우징" />
             {isLoading ? (
                 <div>로딩 중...</div>
             ) : isError ? (
-                <ErrorAlert/>
+                <ErrorAlert message="데이터를 불러오는데 실패했습니다." onDismiss={function (): void {
+                    throw new Error('Function not implemented.');
+                }} />
             ) : (
-                <ProductGrid products={products} cardSize='L'/>
+                <ProductGrid products={products} cardSize="L" />
             )}
-            <div ref={observerRef} style={{height: '1px', background: 'transparent'}}/>
+            <div ref={observerRef} style={{ height: '1px', background: 'transparent' }} />
         </div>
     );
-}
+};
