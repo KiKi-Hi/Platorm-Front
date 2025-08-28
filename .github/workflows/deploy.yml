@@ -65,4 +65,8 @@ jobs:
       - name: Deploy to EC2
         run: |
           echo "Deploying $IMAGE_NAME:${IMAGE_TAG} to $EC2_HOST"
+<<<<<<< HEAD
           ssh ubuntu@"$EC2_HOST" "IMAGE_NAME='${IMAGE_NAME}' IMAGE_TAG='${IMAGE_TAG}' bash -s" < ./deploy.sh
+=======
+          ssh ubuntu@"$EC2_HOST" "IMAGE_NAME='${IMAGE_NAME}' IMAGE_TAG='${IMAGE_TAG}' bash -s" < ./deploy.sh
+>>>>>>> 8b2d61614a684dd5eea8778c3eddb488f9d83743
