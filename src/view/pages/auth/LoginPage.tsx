@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import { css } from '@emotion/react';
-import Logo from '@assets/img/logo/logo.svg';
+import { ReactComponent as Logo } from '@assets/img/logo/logo.svg';
 import BtnSocialLogin from './components/BtnSocialLogin';
 import { googleLogin, kakaoLogin } from '../../../controller/feature/auth/authApi';
 

@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react";
 import { css } from "@emotion/react";
-import TopLogo from "@assets/img/logo/topbar-logo.svg";
-import SearchIcon from "@assets/icons/menu/search.svg";
-import CartIcon from "@assets/icons/menu/cart.svg";
-import MenuIcon from "@assets/icons/menu/menu.svg";
+import { ReactComponent as TopLogo } from "@assets/img/logo/topbar-logo.svg";
+import { ReactComponent as SearchIcon }from "@assets/icons/menu/search.svg";
+import { ReactComponent as CartIcon } from "@assets/icons/menu/cart.svg";
+import { ReactComponent as MenuIcon } from "@assets/icons/menu/menu.svg";
 import { Sidebar } from "./Sidebar";
 import {useLocation} from "react-router-dom";
 
