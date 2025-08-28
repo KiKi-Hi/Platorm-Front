@@ -1,13 +1,15 @@
 import { api } from '../../api/axiosInstance';
 
-export const googleLogin = async () => {
+const googleLogin = async () => {
   await api.post('https://api.kikihi.store/oauth2/authorization/google');
 };
 
-export const kakaoLogin = async () => {
+const kakaoLogin = async () => {
   await api.post('https://api.kikihi.store/oauth2/authorization/kakao');
 };
 
-export const logout = async () => {
+const logout = async () => {
   await api.post('https://api.kikihi.store/api/v1/auth/logout');
 };
+
+export { googleLogin, kakaoLogin, logout };

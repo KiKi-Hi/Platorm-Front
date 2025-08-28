@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-export const useKeyboardLoader = (canvas: HTMLDivElement | null) => {
+const useKeyboardLoader = (canvas: HTMLDivElement | null) => {
   const modelRef = useRef<THREE.Object3D | null>(null);
   const [sceneReady, setSceneReady] = useState(false);
 
@@ -29,7 +29,6 @@ export const useKeyboardLoader = (canvas: HTMLDivElement | null) => {
     directionalLight.position.set(2, 2, 2);
     scene.add(directionalLight);
 
-    // Orbit Controls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.1;
@@ -37,7 +36,6 @@ export const useKeyboardLoader = (canvas: HTMLDivElement | null) => {
     controls.target.set(0.5, 0.5, 0.5);
     controls.update();
 
-    // Load Textures (WebP)
     const textureLoader = new THREE.TextureLoader();
     const keycapTexture = textureLoader.load('/model/orange.webp', (tex) => (tex.flipY = false));
     const housingTexture = textureLoader.load(
@@ -45,7 +43,6 @@ export const useKeyboardLoader = (canvas: HTMLDivElement | null) => {
       (tex) => (tex.flipY = false),
     );
 
-    // Load Model
     const loader = new GLTFLoader();
     loader.load(
       '/glb/keyboard.glb',
@@ -79,8 +76,7 @@ export const useKeyboardLoader = (canvas: HTMLDivElement | null) => {
       renderer.render(scene, camera);
     };
     animate();
-
-    // Resize
+    
     const resizeHandler = () => {
       camera.aspect = canvas.clientWidth / canvas.clientHeight;
       camera.updateProjectionMatrix();
@@ -105,3 +101,5 @@ export const useKeyboardLoader = (canvas: HTMLDivElement | null) => {
 
   return { toggleKeycaps, sceneReady };
 };
+
+export { useKeyboardLoader };

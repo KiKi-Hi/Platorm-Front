@@ -1,6 +1,6 @@
 import { Theme } from '@emotion/react';
 
-export const theme: Theme = {
+const theme: Theme = {
     colors: {
         success: '#1FB511',
         warning: '#FFAB35',
@@ -131,3 +131,5 @@ export const theme: Theme = {
         xl: '1280px',
     }
 };
+
+export { theme };

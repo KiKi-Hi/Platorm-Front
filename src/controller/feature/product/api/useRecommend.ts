@@ -28,7 +28,7 @@ const fetchRecommendations = async (): Promise<Recommendation[]> => {
     return response.data.data;
 };
 
-export const useRecommend = () => {
+const useRecommend = () => {
     return useQuery(
         ['recommendations'],
         fetchRecommendations,
@@ -38,3 +38,5 @@ export const useRecommend = () => {
         }
     );
 };
+
+export { useRecommend };

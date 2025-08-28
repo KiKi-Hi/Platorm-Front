@@ -2,7 +2,7 @@ import axios from 'axios';
 import store from "@app/store";
 import {setError} from '../feature/error/store/errorSlice';
 
-export interface ApiResponse<T> {
+interface ApiResponse<T> {
   success: boolean;
   data: T;
   error?: {
@@ -15,7 +15,7 @@ export interface ApiResponse<T> {
 const baseURL = process.env.REACT_APP_BASE_URL;
 if (!baseURL) throw new Error('Missing REACT_APP_BASE_URL');
 
-export const api = axios.create({
+const api = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
     headers: {
         'Content-Type': 'application/json',
@@ -31,3 +31,5 @@ api.interceptors.request.use(
     return Promise.reject(error);
   },
 );
+
+export { api, ApiResponse }

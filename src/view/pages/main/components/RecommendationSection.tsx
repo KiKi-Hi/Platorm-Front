@@ -20,7 +20,7 @@ const carouselStyle = css`
     }
 `;
 
-export const RecommendationsSection = () => {
+const RecommendationsSection = () => {
     const { recommendations, isLoading, error } = useRecommendationsSection();
 
     if (isLoading) {
@@ -59,3 +59,5 @@ export const RecommendationsSection = () => {
         </section>
     );
 };
+
+export { RecommendationsSection };

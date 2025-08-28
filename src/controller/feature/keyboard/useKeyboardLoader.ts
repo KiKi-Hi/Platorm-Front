@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-export const useKeyboardLoader = (container: HTMLDivElement) => {
+const useKeyboardLoader = (container: HTMLDivElement) => {
   const scene = new THREE.Scene();
 
   const width = container.clientWidth || window.innerWidth;
@@ -87,3 +87,6 @@ export const useKeyboardLoader = (container: HTMLDivElement) => {
 
   return { toggleKeycaps, sceneReady: true };
 };
+
+
+export { useKeyboardLoader };

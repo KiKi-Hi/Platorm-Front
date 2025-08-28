@@ -9,10 +9,12 @@ const meta: Meta<typeof KeyboardCanvas> = {
 export default meta;
 type Story = StoryObj<typeof KeyboardCanvas>;
 
-export const Default: Story = {
+ const Default: Story = {
   render: () => (
     <div className="h-screen w-screen">
       <KeyboardCanvas />
     </div>
   ),
 };
+
+ export { Default };

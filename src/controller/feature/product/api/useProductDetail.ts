@@ -12,8 +12,10 @@ const fetchProductDetail = async (id: string) => {
     return response.data.data;
 };
 
-export const useProductDetail = (id: string) => {
+const useProductDetail = (id: string) => {
     return useQuery(["productDetail", id], () => fetchProductDetail(id), {
         enabled: !!id
     });
 };
+
+export { useProductDetail };

@@ -19,7 +19,7 @@ const fetchInfiniteProducts = async ({ pageParam = 1, queryKey }: any): Promise<
   return response.data.data;
 };
 
-export const useProductsInfiniteQuery = (params: {
+const useProductsInfiniteQuery = (params: {
   category: Category;
   manufacturer?: string;
   maxPrice?: number;
@@ -39,3 +39,4 @@ export const useProductsInfiniteQuery = (params: {
   );
 };
 
+export { useProductsInfiniteQuery, fetchInfiniteProducts };

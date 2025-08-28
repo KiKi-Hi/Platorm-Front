@@ -183,7 +183,7 @@ declare global {
     }
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
     const categories = ["키보드", "하우징", "스위치", "키캡", "악세서리", "케이스"];
     const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
 
@@ -263,3 +263,5 @@ export const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
         </>
     );
 };
+
+export { Sidebar };

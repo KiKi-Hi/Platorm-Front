@@ -1,6 +1,6 @@
 import { useRecommend } from "../api/useRecommend";
 
-export const useRecommendationsSection = () => {
+const useRecommendationsSection = () => {
     const { data, isLoading, isError, error } = useRecommend();
 
     return {
@@ -9,3 +9,5 @@ export const useRecommendationsSection = () => {
         error: isError ? error : null,
     };
 };
+
+export { useRecommendationsSection };

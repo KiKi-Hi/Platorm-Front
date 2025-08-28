@@ -53,7 +53,7 @@ const bottomSentinelStyle = css`
   background: transparent;
 `;
 
-export const HomePage = () => {
+const HomePage = () => {
     const [selectedCategory, setSelectedCategory] = useState<Category>(Category.KEYCAP);
 
     const { data, fetchNextPage, hasNextPage, isError, isLoading } = useProductsInfiniteQuery({
@@ -183,3 +183,5 @@ export const HomePage = () => {
         </div>
     );
 };
+
+export { HomePage };
