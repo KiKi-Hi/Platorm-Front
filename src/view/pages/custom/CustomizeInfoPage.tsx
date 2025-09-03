@@ -1,459 +1,189 @@
+/** @jsxImportSource @emotion/react */
+import React from 'react';
+import { css, useTheme } from '@emotion/react';
+
 const CustomizeInfoPage = () => {
+  const theme = useTheme();
+
+  const containerStyles = css`
+    display: flex;
+    flex-direction: column;
+    padding: ${theme.spacing[20]} ${theme.spacing[20]} ${theme.spacing[24]};
+    gap: ${theme.spacing[8]};
+    width: 100%;
+  `;
+
+  const sectionStyles = css`
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.spacing[4]};
+    width: 100%;
+  `;
+
+  const titleWrapperStyles = css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  `;
+
+  const titleStyles = css`
+    display: flex;
+    align-items: center;
+    gap: ${theme.spacing[4]};
+  `;
+
+  const assistiveIconStyles = css`
+    width: 18px;
+    height: 18px;
+    border: 1.6px solid ${theme.colors.icon.extraLight15};
+    border-radius: 50%;
+  `;
+
+  const subtitleStyles = css`
+    color: ${theme.colors.text.light1};
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+  `;
+
+  const dividerStyles = css`
+    flex: 1 1 0;
+    height: 0px;
+    border-top: 1px solid ${theme.colors.line.default0};
+  `;
+
+  const cardContainerStyles = css`
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.spacing[8]};
+    width: 100%;
+  `;
+
+  const cardStyles = css`
+    display: flex;
+    gap: ${theme.spacing[12]};
+    padding: ${theme.spacing[12]};
+    background: ${theme.colors.fill.extraLight50};
+    border-radius: ${theme.radius.m};
+    align-items: center;
+    width: 100%;
+  `;
+
+  const cardImageWrapperStyles = css`
+    width: 90px;
+    height: 70px;
+    border-radius: ${theme.radius.s};
+    overflow: hidden;
+    background: ${theme.colors.fill.extraLight};
+    position: relative;
+  `;
+
+  const cardContentStyles = css`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.spacing[4]};
+  `;
+
+  const cardTitleStyles = css`
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: ${theme.colors.text.default0};
+  `;
+
+  const cardDescriptionStyles = css`
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: ${theme.colors.text.light1};
+  `;
+
+  const priceSectionStyles = css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  `;
+
+  const quantityWrapperStyles = css`
+    display: flex;
+    align-items: center;
+    gap: ${theme.spacing[8]};
+  `;
+
+  const quantityButtonStyles = css`
+    width: 24px;
+    height: 24px;
+    border: 1.6px solid ${theme.colors.icon.default0};
+    border-radius: ${theme.radius.s};
+  `;
+
+  const priceTextStyles = css`
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: ${theme.colors.text.default0};
+  `;
+
   return (
-    <div className="relative h-[1164px] w-96 overflow-hidden bg-white">
-      <div className="absolute left-0 top-[44px] inline-flex w-96 flex-col items-start justify-start">
-        <div
-          data-cart="true"
-          data-menu="true"
-          data-search="true"
-          data-style="Back"
-          className="inline-flex h-12 items-center justify-between self-stretch px-5 py-3"
-        >
-          <div className="relative size-5 overflow-hidden">
-            <div className="outline-Icon-Default-0 absolute left-px top-[4px] h-3.5 w-5 outline outline-2 outline-offset-[-1px]" />
+      <div css={containerStyles}>
+        <div css={sectionStyles}>
+          <div css={titleWrapperStyles}>
+            <div css={titleStyles}>
+              <div css={css`font-size: 14px; font-weight: 700; line-height: 21px; color: ${theme.colors.text.default0}`}>
+                키보드 제목이 들어갑니다
+              </div>
+              <div css={assistiveIconStyles}></div>
+            </div>
+            <div css={assistiveIconStyles}></div>
           </div>
-          <div className="flex items-start justify-start gap-4">
-            <div
-              data-role="Default"
-              data-size="L"
-              className="flex items-center justify-start gap-2.5"
-            >
-              <div className="relative size-6 overflow-hidden">
-                <div className="outline-Icon-Default-0 absolute left-[3px] top-[3px] size-4 outline outline-[1.60px] outline-offset-[-0.80px]" />
-              </div>
-            </div>
-            <div
-              data-role="Default"
-              data-size="L"
-              className="flex items-center justify-start gap-2.5"
-            >
-              <div className="relative size-6 overflow-hidden">
-                <div className="outline-Icon-Default-0 absolute left-[4px] top-[3px] size-4 outline outline-[1.60px] outline-offset-[-0.80px]" />
-              </div>
-            </div>
-            <div
-              data-role="Default"
-              data-size="L"
-              className="flex items-center justify-start gap-2.5"
-            >
-              <div className="relative size-6 overflow-hidden">
-                <div className="outline-Icon-Default-0 absolute left-[4px] top-[6px] h-3 w-4 outline outline-[1.60px] outline-offset-[-0.80px]" />
-              </div>
+          <div css={subtitleStyles}>
+            키보드 타입
+            <div css={css`display: flex; gap: ${theme.spacing[4]};`}>
+              <span>하우징 제품명</span>
+              <span>|</span>
+              <span>스위치 제품명</span>
+              <span>|</span>
+              <span>키캡 제품명</span>
             </div>
           </div>
         </div>
-        <div className="relative flex h-64 flex-col items-start justify-start self-stretch overflow-hidden">
-          <div
-            data-aspect-ratio="1:1"
-            className="flex flex-col items-start justify-start self-stretch overflow-hidden"
-          >
-            <div className="flex origin-top-left rotate-[-19.47deg] flex-col items-center justify-center self-stretch" />
-          </div>
-          <div className="bg-Fill-ExtraLight absolute left-0 top-0 h-64 w-96" />
-        </div>
-        <div className="flex flex-col items-start justify-start gap-2 self-stretch px-5 pb-6 pt-5">
-          <div className="flex flex-col items-start justify-start gap-1 self-stretch">
-            <div className="inline-flex items-start justify-between self-stretch">
-              <div className="flex h-6 items-center justify-start gap-1">
-                <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-sm font-bold leading-tight">
-                  키보드 제목이 들어갑니다
-                </div>
-                <div
-                  data-role="Assistive"
-                  data-size="M"
-                  className="flex size-4 items-center justify-start gap-2.5"
-                >
-                  <div className="relative size-4 overflow-hidden">
-                    <div className="outline-Icon-ExtraLight-15 absolute left-[3px] top-[3.50px] size-3 outline outline-[1.60px] outline-offset-[-0.80px]" />
-                  </div>
-                </div>
-              </div>
-              <div
-                data-role="Assistive"
-                data-size="L"
-                className="flex items-center justify-start gap-2.5"
-              >
-                <div className="relative size-6 overflow-hidden">
-                  <div className="outline-Icon-ExtraLight-15 absolute left-[12px] top-[5.50px] h-3 w-[0.02px] outline outline-[3px] outline-offset-[-1.50px]" />
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-start justify-start self-stretch">
-              <div className="text-Text-Light-1 justify-start font-['Pretendard'] text-xs font-normal leading-none">
-                키보드 타입
-              </div>
-              <div className="inline-flex flex-wrap place-content-start items-start gap-1 self-stretch">
-                <div className="text-Text-Light-1 justify-start font-['Pretendard'] text-xs font-normal leading-none">
-                  하우징 제품명
-                </div>
-                <div className="text-Text-Light-1 justify-start font-['Pretendard'] text-xs font-normal leading-none">
-                  |
-                </div>
-                <div className="text-Text-Light-1 justify-start font-['Pretendard'] text-xs font-normal leading-none">
-                  스위치 제품명
-                </div>
-                <div className="text-Text-Light-1 justify-start font-['Pretendard'] text-xs font-normal leading-none">
-                  |
-                </div>
-                <div className="text-Text-Light-1 justify-start font-['Pretendard'] text-xs font-normal leading-none">
-                  키캡 제품명
-                </div>
-              </div>
+        <div css={cardContainerStyles}>
+          <div css={cardStyles}>
+            <div css={cardImageWrapperStyles}></div>
+            <div css={cardContentStyles}>
+              <div css={cardTitleStyles}>선택된 부품이 없어요!</div>
+              <div css={cardDescriptionStyles}>선택하여 부품 추가하기</div>
             </div>
           </div>
-          <div className="inline-flex items-start justify-between self-stretch">
-            <div className="flex items-center justify-start gap-0.5">
-              <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-xs font-semibold leading-none">
-                000,000
-              </div>
-              <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-xs font-semibold leading-none">
-                원
-              </div>
-            </div>
-            <div className="flex items-center justify-start gap-4">
-              <div
-                data-role="Assistive"
-                data-size="L"
-                className="flex items-center justify-start gap-2.5"
-              >
-                <div className="relative size-6 overflow-hidden">
-                  <div className="outline-Icon-ExtraLight-15 absolute left-[4px] top-[4px] size-4 outline outline-[1.60px] outline-offset-[-0.80px]" />
-                </div>
-              </div>
-              <div
-                data-role="Assistive"
-                data-size="L"
-                className="flex items-center justify-start gap-2.5"
-              >
-                <div className="relative size-6 overflow-hidden">
-                  <div className="outline-Icon-ExtraLight-15 absolute left-[5px] top-[3px] h-4 w-3.5 outline outline-[1.60px] outline-offset-[-0.80px]" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col items-start justify-start self-stretch px-5">
-          <div
-            data-numberinput="true"
-            data-numberoff="true"
-            data-startline="true"
-            data-state="off"
-            className="flex flex-col items-start justify-start self-stretch"
-          >
-            <div className="flex flex-col items-start justify-start gap-2 self-stretch px-0.5 py-2">
-              <div className="inline-flex items-center justify-start gap-2 self-stretch">
-                <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                  카테고리
-                </div>
-                <div className="outline-Line-Default-0 h-0 flex-1 outline outline-1 outline-offset-[-0.50px]" />
-              </div>
-            </div>
-            <div className="bg-Fill-ExtraLight-50%/50 flex flex-col items-start justify-start self-stretch rounded-lg p-3">
-              <div className="inline-flex items-center justify-start gap-3 self-stretch">
-                <div className="flex items-center justify-start gap-2.5 p-2.5">
-                  <div className="bg-Fill-Light size-16 border-black" />
-                </div>
-                <div className="inline-flex w-32 flex-col items-start justify-start gap-1">
-                  <div className="text-Text-Light-1 justify-start self-stretch font-['Pretendard'] text-base font-bold leading-normal">
-                    선택된 부품이 없어요!
+          <div css={cardStyles}>
+            <div css={cardImageWrapperStyles}></div>
+            <div css={cardContentStyles}>
+              <div css={cardTitleStyles}>제조사명</div>
+              <div css={cardDescriptionStyles}>제품명이 들어갑니다 두줄 이상도 커버 가능합니다</div>
+              <div css={priceSectionStyles}>
+                <div css={quantityWrapperStyles}>
+                  <div css={quantityButtonStyles}></div>
+                  <div css={css`
+                  height: 30px;
+                  padding: ${theme.spacing[8]} ${theme.spacing[12]};
+                  background: ${theme.colors.fill.white};
+                  border-radius: ${theme.radius.s};
+                  border: 1px solid ${theme.colors.line.light1};
+                `}>
+                    1
                   </div>
-                  <div className="text-Text-ExtraLight-15 justify-start self-stretch font-['Pretendard'] text-sm font-medium leading-tight">
-                    선택하여 부품 추가하기
-                  </div>
+                  <div css={quantityButtonStyles}></div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div
-            data-numberinput="true"
-            data-numberoff="true"
-            data-startline="true"
-            data-state="on"
-            className="flex flex-col items-start justify-start self-stretch"
-          >
-            <div className="flex flex-col items-start justify-start gap-2 self-stretch px-0.5 py-2">
-              <div className="inline-flex items-center justify-start gap-2 self-stretch">
-                <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                  카테고리
-                </div>
-                <div className="outline-Line-Default-0 h-0 flex-1 outline outline-1 outline-offset-[-0.50px]" />
-              </div>
-            </div>
-            <div className="bg-Fill-ExtraLight-50%/50 inline-flex items-start justify-start gap-3 self-stretch rounded-lg p-3">
-              <div className="relative inline-flex h-16 w-24 flex-col items-start justify-start overflow-hidden rounded">
-                <div
-                  data-aspect-ratio="1:1"
-                  className="flex flex-col items-start justify-start self-stretch overflow-hidden"
-                >
-                  <div className="flex origin-top-left rotate-[-19.47deg] flex-col items-center justify-center self-stretch" />
-                </div>
-                <div className="bg-Fill-ExtraLight absolute left-0 top-0 h-16 w-24" />
-              </div>
-              <div className="inline-flex flex-1 flex-col items-end justify-start gap-3">
-                <div className="flex flex-col items-start justify-start gap-1 self-stretch">
-                  <div className="inline-flex items-center justify-between self-stretch">
-                    <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                      제조사명
-                    </div>
-                    <div
-                      data-role="Default"
-                      data-size="M"
-                      className="flex size-4 items-center justify-start gap-2.5"
-                    >
-                      <div className="relative size-4 overflow-hidden">
-                        <div className="outline-Icon-Default-0 absolute left-[4.50px] top-[4.50px] size-2 outline outline-[1.60px] outline-offset-[-0.80px]" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-Text-Light-1 justify-start self-stretch font-['Pretendard'] text-sm font-medium leading-tight">
-                    제품명이 들어갑니다 두줄 이상도 커버 가능합니다
-                  </div>
-                </div>
-                <div className="inline-flex items-center justify-between self-stretch">
-                  <div className="flex items-center justify-start gap-2">
-                    <div
-                      data-role="Default"
-                      data-size="L"
-                      className="flex items-center justify-start gap-2.5"
-                    >
-                      <div className="relative size-6 overflow-hidden">
-                        <div className="outline-Icon-Default-0 absolute left-[5px] top-[12px] h-0 w-3.5 outline outline-2 outline-offset-[-1px]" />
-                      </div>
-                    </div>
-                    <div className="outline-Line-Light-1 inline-flex h-7 flex-col items-center justify-center rounded bg-Fill-White px-3 py-2.5 outline outline-1 outline-offset-[-1px]">
-                      <div className="justify-start text-center font-['Pretendard'] text-sm font-semibold leading-tight text-black">
-                        1
-                      </div>
-                    </div>
-                    <div
-                      data-role="Default"
-                      data-size="L"
-                      className="flex items-center justify-start gap-2.5"
-                    >
-                      <div className="relative size-6 overflow-hidden">
-                        <div className="outline-Icon-Default-0 absolute left-[5px] top-[5px] size-3.5 outline outline-2 outline-offset-[-1px]" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 items-center justify-end gap-0.5">
-                    <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                      000,000
-                    </div>
-                    <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                      원
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            data-numberinput="true"
-            data-numberoff="true"
-            data-startline="true"
-            data-state="on"
-            className="flex flex-col items-start justify-start self-stretch"
-          >
-            <div className="flex flex-col items-start justify-start gap-2 self-stretch px-0.5 py-2">
-              <div className="inline-flex items-center justify-start gap-2 self-stretch">
-                <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                  카테고리
-                </div>
-                <div className="outline-Line-Default-0 h-0 flex-1 outline outline-1 outline-offset-[-0.50px]" />
-              </div>
-            </div>
-            <div className="bg-Fill-ExtraLight-50%/50 inline-flex items-start justify-start gap-3 self-stretch rounded-lg p-3">
-              <div className="relative inline-flex h-16 w-24 flex-col items-start justify-start overflow-hidden rounded">
-                <div
-                  data-aspect-ratio="1:1"
-                  className="flex flex-col items-start justify-start self-stretch overflow-hidden"
-                >
-                  <div className="flex origin-top-left rotate-[-19.47deg] flex-col items-center justify-center self-stretch" />
-                </div>
-                <div className="bg-Fill-ExtraLight absolute left-0 top-0 h-16 w-24" />
-              </div>
-              <div className="inline-flex flex-1 flex-col items-end justify-start gap-3">
-                <div className="flex flex-col items-start justify-start gap-1 self-stretch">
-                  <div className="inline-flex items-center justify-between self-stretch">
-                    <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                      제조사명
-                    </div>
-                    <div
-                      data-role="Default"
-                      data-size="M"
-                      className="flex size-4 items-center justify-start gap-2.5"
-                    >
-                      <div className="relative size-4 overflow-hidden">
-                        <div className="outline-Icon-Default-0 absolute left-[4.50px] top-[4.50px] size-2 outline outline-[1.60px] outline-offset-[-0.80px]" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-Text-Light-1 justify-start self-stretch font-['Pretendard'] text-sm font-medium leading-tight">
-                    제품명이 들어갑니다 두줄 이상도 커버 가능합니다
-                  </div>
-                </div>
-                <div className="inline-flex items-center justify-between self-stretch">
-                  <div className="flex items-center justify-start gap-2">
-                    <div
-                      data-role="Default"
-                      data-size="L"
-                      className="flex items-center justify-start gap-2.5"
-                    >
-                      <div className="relative size-6 overflow-hidden">
-                        <div className="outline-Icon-Default-0 absolute left-[5px] top-[12px] h-0 w-3.5 outline outline-2 outline-offset-[-1px]" />
-                      </div>
-                    </div>
-                    <div className="outline-Line-Light-1 inline-flex h-7 flex-col items-center justify-center rounded bg-Fill-White px-3 py-2.5 outline outline-1 outline-offset-[-1px]">
-                      <div className="justify-start text-center font-['Pretendard'] text-sm font-semibold leading-tight text-black">
-                        1
-                      </div>
-                    </div>
-                    <div
-                      data-role="Default"
-                      data-size="L"
-                      className="flex items-center justify-start gap-2.5"
-                    >
-                      <div className="relative size-6 overflow-hidden">
-                        <div className="outline-Icon-Default-0 absolute left-[5px] top-[5px] size-3.5 outline outline-2 outline-offset-[-1px]" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 items-center justify-end gap-0.5">
-                    <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                      000,000
-                    </div>
-                    <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                      원
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            data-numberinput="true"
-            data-numberoff="true"
-            data-startline="true"
-            data-state="on"
-            className="flex flex-col items-start justify-start self-stretch"
-          >
-            <div className="flex flex-col items-start justify-start gap-2 self-stretch px-0.5 py-2">
-              <div className="inline-flex items-center justify-start gap-2 self-stretch">
-                <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                  카테고리
-                </div>
-                <div className="outline-Line-Default-0 h-0 flex-1 outline outline-1 outline-offset-[-0.50px]" />
-              </div>
-            </div>
-            <div className="bg-Fill-ExtraLight-50%/50 inline-flex items-start justify-start gap-3 self-stretch rounded-lg p-3">
-              <div className="relative inline-flex h-16 w-24 flex-col items-start justify-start overflow-hidden rounded">
-                <div
-                  data-aspect-ratio="1:1"
-                  className="flex flex-col items-start justify-start self-stretch overflow-hidden"
-                >
-                  <div className="flex origin-top-left rotate-[-19.47deg] flex-col items-center justify-center self-stretch" />
-                </div>
-                <div className="bg-Fill-ExtraLight absolute left-0 top-0 h-16 w-24" />
-              </div>
-              <div className="inline-flex flex-1 flex-col items-end justify-start gap-3">
-                <div className="flex flex-col items-start justify-start gap-1 self-stretch">
-                  <div className="inline-flex items-center justify-between self-stretch">
-                    <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                      제조사명
-                    </div>
-                    <div
-                      data-role="Default"
-                      data-size="M"
-                      className="flex size-4 items-center justify-start gap-2.5"
-                    >
-                      <div className="relative size-4 overflow-hidden">
-                        <div className="outline-Icon-Default-0 absolute left-[4.50px] top-[4.50px] size-2 outline outline-[1.60px] outline-offset-[-0.80px]" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-Text-Light-1 justify-start self-stretch font-['Pretendard'] text-sm font-medium leading-tight">
-                    제품명이 들어갑니다 두줄 이상도 커버 가능합니다
-                  </div>
-                </div>
-                <div className="inline-flex items-center justify-between self-stretch">
-                  <div className="flex items-center justify-start gap-2">
-                    <div
-                      data-role="Default"
-                      data-size="L"
-                      className="flex items-center justify-start gap-2.5"
-                    >
-                      <div className="relative size-6 overflow-hidden">
-                        <div className="outline-Icon-Default-0 absolute left-[5px] top-[12px] h-0 w-3.5 outline outline-2 outline-offset-[-1px]" />
-                      </div>
-                    </div>
-                    <div className="outline-Line-Light-1 inline-flex h-7 flex-col items-center justify-center rounded bg-Fill-White px-3 py-2.5 outline outline-1 outline-offset-[-1px]">
-                      <div className="justify-start text-center font-['Pretendard'] text-sm font-semibold leading-tight text-black">
-                        1
-                      </div>
-                    </div>
-                    <div
-                      data-role="Default"
-                      data-size="L"
-                      className="flex items-center justify-start gap-2.5"
-                    >
-                      <div className="relative size-6 overflow-hidden">
-                        <div className="outline-Icon-Default-0 absolute left-[5px] top-[5px] size-3.5 outline outline-2 outline-offset-[-1px]" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 items-center justify-end gap-0.5">
-                    <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                      000,000
-                    </div>
-                    <div className="text-Text-Default-0 justify-start font-['Pretendard'] text-base font-bold leading-normal">
-                      원
-                    </div>
-                  </div>
-                </div>
+                <div css={priceTextStyles}>000,000 원</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="absolute left-0 top-0 inline-flex h-11 w-96 flex-col items-start justify-center px-5">
-        <div className="inline-flex items-center justify-start self-stretch">
-          <div className="text-Text-Black flex-1 justify-start font-['Pretendard'] text-base font-normal leading-snug">
-            9:41
-          </div>
-          <div className="flex items-center justify-start gap-1.5">
-            <div className="bg-Text-Black h-3 w-5" />
-            <div className="bg-Text-Black h-3 w-4" />
-            <div className="border-Text-Black h-3 w-6 rounded border opacity-30" />
-            <div className="bg-Text-Black h-1 w-[1.33px] opacity-40" />
-            <div className="bg-Text-Black h-2 w-5 rounded-sm" />
-          </div>
-        </div>
-      </div>
-      <div
-        data-style="2BTN"
-        className="absolute left-0 top-[1079px] inline-flex w-96 flex-col items-start justify-start gap-2.5 overflow-hidden border-t-[0.40px] border-Line-Hard-1 bg-Fill-White px-5 pb-7 pt-3"
-      >
-        <div className="inline-flex items-center justify-start gap-2 self-stretch">
-          <div
-            data-primary="Assistive"
-            className="bg-Fill-ExtraLight flex flex-1 items-center justify-center rounded-lg px-5 py-2"
-          >
-            <div className="text-Text-Light-1 justify-start font-['Pretendard'] text-xl font-bold leading-loose">
-              버튼명
-            </div>
-          </div>
-          <div
-            data-primary="Default"
-            className="bg-Fill-HighLight flex flex-1 items-center justify-center rounded-lg px-5 py-2"
-          >
-            <div className="text-Text-White justify-start font-['Pretendard'] text-xl font-bold leading-loose">
-              버튼명
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
-}
+};
 
 export {CustomizeInfoPage};

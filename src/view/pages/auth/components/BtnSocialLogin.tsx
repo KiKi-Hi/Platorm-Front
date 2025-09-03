@@ -44,7 +44,7 @@ const BtnSocialLogin: React.FC<SocialLoginButtonProps> = ({ type, onClick }) => 
   return (
       <button css={buttonStyle} onClick={onClick} aria-label={label}>
         <div css={iconStyle}>
-          {isKakao ? <KakaoIcon /> : <GoogleIcon />}
+          {isKakao ? (<img src="/assets/icons/brand/kakao.svg" alt='kakao'/>) : (<img src="/assets/icons/brand/google.svg" alt='google'/>)}
         </div>
         {label}
       </button>

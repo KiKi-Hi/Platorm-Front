@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import { css } from '@emotion/react';
-import { ReactComponent as Logo } from '@assets/img/logo/logo.svg';
 import BtnSocialLogin from './components/BtnSocialLogin';
 import { googleLogin, kakaoLogin } from '../../../controller/feature/auth/authApi';
 
@@ -37,7 +36,7 @@ const LoginPage = () => {
     return (
         <div css={pageStyle}>
             <div css={logoContainerStyle}>
-                <Logo />
+                <img src="/assets/img/logo/topbar-logo.svg" alt='logo'/>
             </div>
             <div css={buttonGroupStyle}>
                 <BtnSocialLogin type="kakao" onClick={kakaoLogin} />

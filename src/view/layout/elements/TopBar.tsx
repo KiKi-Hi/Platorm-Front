@@ -1,37 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react";
 import { css } from "@emotion/react";
-import { ReactComponent as TopLogo } from "@assets/img/logo/topbar-logo.svg";
-import { ReactComponent as SearchIcon }from "@assets/icons/menu/search.svg";
-import { ReactComponent as CartIcon } from "@assets/icons/menu/cart.svg";
-import { ReactComponent as MenuIcon } from "@assets/icons/menu/menu.svg";
 import { Sidebar } from "./Sidebar";
 import {useLocation} from "react-router-dom";
-
-const ProductLogo = () => (
-    <svg
-        width="22"
-        height="22"
-        viewBox="0 0 22 22"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <g clipPath="url(#clip0_2013_4714)">
-            <path
-                d="M1 10.6667H21.5M1 10.6667L7.66667 17.3333M1 10.6667L7.66667 4"
-                stroke="#323237"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-        </g>
-        <defs>
-            <clipPath id="clip0_2013_4714">
-                <rect width="22" height="22" fill="white" />
-            </clipPath>
-        </defs>
-    </svg>
-);
 
 const containerStyle = css`
     position: sticky;
@@ -81,22 +52,22 @@ function TopBar() {
     const handleCloseSidebar = () => {
         setSidebarVisible(false);
     };
-
+    
     return (
         <>
             <div css={containerStyle}>
                 <div css={logoWrapperStyle}>
-                    {isProductPage ? <ProductLogo /> : <TopLogo />}
+                    {isProductPage ?
+                        (<img src="/assets/icons/menu/back.svg" alt='back'/>) :
+                        (<img src="/assets/img/logo/topbar-logo.svg" alt='logo'/>)
+                    }
                 </div>
                 <div css={iconGroupStyle}>
                     <div css={iconStyle}>
-                        <SearchIcon />
-                    </div>
-                    <div css={iconStyle}>
-                        <CartIcon />
+                        <img src="/assets/icons/menu/search.svg" alt='search'/>
                     </div>
                     <div css={iconStyle} onClick={handleMenuClick}>
-                        <MenuIcon />
+                        <img src="/assets/icons/menu/menu.svg" alt='menu'/>
                     </div>
                 </div>
             </div>
