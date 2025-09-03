@@ -7,7 +7,7 @@ import NoticeSection from "@view/pages/product/components/sections/NoticeSection
 import {useParams} from "react-router-dom";
 import {useProductDetail} from "../../../controller/feature/product/api/useProductDetail";
 
-export default function DetailPage() {
+const ProductDetailPage = () => {
     const { id } = useParams();
     const {data: product, isLoading, isError} = useProductDetail(id || "");
 
@@ -33,3 +33,5 @@ export default function DetailPage() {
 
     );
 }
+
+export { ProductDetailPage };

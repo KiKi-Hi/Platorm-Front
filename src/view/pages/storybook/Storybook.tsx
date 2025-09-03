@@ -1,6 +1,6 @@
 import React from 'react';
 
-function StorybookPage() {
+const StorybookPage = () => {
   return (
     <iframe
       src={process.env.REACT_APP_STORYBOOK_URL}
@@ -10,4 +10,4 @@ function StorybookPage() {
   );
 }
 
-export default StorybookPage;
+export {StorybookPage};

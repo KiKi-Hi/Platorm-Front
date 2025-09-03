@@ -1,4 +1,4 @@
-function PaymentPage() {
+const PaymentPage = () => {
   return (
     <div className="relative h-[1435px] w-96 overflow-hidden bg-white">
       <div className="absolute left-0 top-0 inline-flex h-11 w-96 flex-col items-start justify-center px-5">
@@ -412,4 +412,4 @@ function PaymentPage() {
   );
 }
 
-export default PaymentPage;
+export {PaymentPage}

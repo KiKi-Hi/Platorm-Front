@@ -1,4 +1,4 @@
-function SearchPage() {
+const SearchPage = () => {
   return (
     <div>
       <div className="relative h-[812px] w-96 overflow-hidden bg-white">
@@ -1335,4 +1335,4 @@ function SearchPage() {
   );
 }
 
-export default SearchPage;
+export {SearchPage};

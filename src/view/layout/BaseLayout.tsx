@@ -9,7 +9,7 @@ import { clearError } from 'controller/feature/error/store/errorSlice';
 import ErrorAlert from "@view/pages/error/ErrorAlert";
 import {useAppSelector} from "@app/store/hook";
 
-function BaseLayout() {
+const BaseLayout = () => {
     const theme = useTheme();
     const location = useLocation();
     const dispatch = useDispatch();
@@ -47,4 +47,4 @@ function BaseLayout() {
     );
 }
 
-export default BaseLayout;
+export {BaseLayout};

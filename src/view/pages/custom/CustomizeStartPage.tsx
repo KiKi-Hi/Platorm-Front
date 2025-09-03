@@ -1,4 +1,4 @@
-function CustomizeStartPage() {
+const CustomizeStartPage = () => {
   return (
     <div className="relative h-[812px] w-96 overflow-hidden bg-white">
       <div className="absolute left-0 top-[44px] inline-flex w-96 flex-col items-start justify-start">
@@ -418,4 +418,4 @@ function CustomizeStartPage() {
   );
 }
 
-export default CustomizeStartPage;
+export {CustomizeStartPage};

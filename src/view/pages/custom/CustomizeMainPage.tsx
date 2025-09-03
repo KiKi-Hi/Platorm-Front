@@ -1,4 +1,4 @@
-function CustomizeMainPage() {
+const CustomizeMainPage = () => {
   return (
     <>
       <div className="relative h-[812px] w-96 overflow-hidden bg-white">
@@ -721,4 +721,4 @@ function CustomizeMainPage() {
   );
 }
 
-export default CustomizeMainPage;
+export {CustomizeMainPage};

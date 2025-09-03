@@ -5,7 +5,7 @@ import { ReactComponent as Logo } from '@assets/img/logo/logo.svg';
 import BtnSocialLogin from './components/BtnSocialLogin';
 import { googleLogin, kakaoLogin } from '../../../controller/feature/auth/authApi';
 
-function LoginPage() {
+const LoginPage = () => {
     const pageStyle = css`
     position: relative;
     display: flex;
@@ -47,4 +47,4 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;
+export {LoginPage};
