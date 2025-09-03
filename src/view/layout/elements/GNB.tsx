@@ -19,7 +19,7 @@ const GNB = ({ current }: GNBProps) => {
     { label: '홈', icon: HomeIcon, path: '/' },
     { label: '커스텀', icon: CustomizeIcon, path: '/custom' },
     { label: '북마크', icon: BookmarkIcon, path: '/bookmark' },
-    { label: '마이페이지', icon: ProfileIcon, path: '/mypage' },
+    { label: '추천', icon: ProfileIcon, path: '/recommend' },
   ];
 
   const containerStyle = css`

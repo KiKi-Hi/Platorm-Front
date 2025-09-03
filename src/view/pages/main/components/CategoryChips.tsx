@@ -62,7 +62,7 @@ function CategoryChips({
       <div css={containerStyle}>
         {categories.map((cat) => (
             <div
-                key={cat.label}
+                key={cat.name}
                 css={chipStyle}
                 onClick={() => handleClick(cat.name)}
             >

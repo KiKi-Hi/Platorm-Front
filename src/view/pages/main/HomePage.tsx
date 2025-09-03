@@ -5,7 +5,7 @@ import CategoryChips from './components/CategoryChips';
 import {ProductGrid} from './components/ProductCard';
 import BannerSlider from './components/BannerSlider';
 import {useProductsInfiniteQuery} from "../../../controller/feature/product/api/useProduct";
-import {Category} from "../../../controller/feature/product/constant/category";
+import {Category, categoryMap} from "../../../controller/feature/product/constant/category";
 import ErrorAlert from '../error/ErrorAlert';
 import {RecommendationsSection} from "@view/pages/main/components/RecommendationSection";
 
@@ -121,17 +121,8 @@ const HomePage = () => {
         [data]
     );
 
-    const categoryMap: Record<string, Category> = {
-        키캡: Category.KEYCAP,
-        하우징: Category.HOUSING,
-        스위치: Category.SWITCH,
-        키보드: Category.KEYBOARD,
-        악세사리: Category.ACCESSORIES,
-        케이스: Category.CASE
-    };
-
     const handleCategoryChange = (category: string) => {
-        const mappedCategory = categoryMap[category];
+        const mappedCategory = categoryMap[category.toLowerCase()];
         if (mappedCategory) {
             setSelectedCategory(mappedCategory);
         } else {
