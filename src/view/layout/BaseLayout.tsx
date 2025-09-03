@@ -47,4 +47,4 @@ const BaseLayout = () => {
     );
 }
 
-export {BaseLayout};
+export default BaseLayout;

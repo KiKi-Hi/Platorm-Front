@@ -10,4 +10,4 @@ const StorybookPage = () => {
   );
 }
 
-export {StorybookPage};
+export default StorybookPage;

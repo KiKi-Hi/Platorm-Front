@@ -186,4 +186,4 @@ const CustomizeInfoPage = () => {
   );
 };
 
-export {CustomizeInfoPage};
+export default CustomizeInfoPage;

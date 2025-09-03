@@ -25,4 +25,4 @@ const SearchPage = () => {
   );
 };
 
-export {SearchPage};
+export default SearchPage;

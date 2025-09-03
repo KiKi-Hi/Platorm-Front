@@ -176,4 +176,4 @@ const CustomizeStartPage = () => {
   );
 };
 
-export {CustomizeStartPage};
+export default CustomizeStartPage;

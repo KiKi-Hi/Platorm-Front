@@ -8,10 +8,7 @@ type ErrorAlertProps = {
   onDismiss: () => void;
 };
 
-export function ErrorAlert({
-                             message = '일시적인 오류가 발생했습니다.',
-                             onDismiss,
-                           }: ErrorAlertProps) {
+const ErrorAlert = ({ message = '일시적인 오류가 발생했습니다.', onDismiss }: ErrorAlertProps) =>{
   return (
       <div
           css={css`

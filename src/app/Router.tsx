@@ -1,20 +1,18 @@
 import React from 'react';
 import { RouteObject } from 'react-router-dom';
 
-import {StorybookPage} from '@view/pages/storybook/Storybook';
-import {LoginPage} from '@view/pages/auth/LoginPage';
-import {BaseLayout} from '@view/layout/BaseLayout';
-import {ProductDetailPage} from '@view/pages/product/ProductDetailPage';
-import {CustomizeMainPage} from '@view/pages/custom/CustomizeMainPage';
-import {CustomizeStartPage} from '@view/pages/custom/CustomizeStartPage';
-import {CustomizeInfoPage} from '@view/pages/custom/CustomizeInfoPage';
-import {SearchPage} from '@view/pages/search/SearchPage';
-// import CartPage from '@view/pages/cart/CartPage';
-// import {PaymentCompletePage} from '@view/pages/payment/PaymentCompletePage';
-// import { PaymentPage } from '@view/pages/payment/PaymentPage';
-import { HomePage } from '@view/pages/main/HomePage';
-import { ErrorAlert } from '@view/pages/error/ErrorAlert';
-import { ROUTES } from '../model/constants/routes';
+import StorybookPage from '@view/pages/storybook/Storybook';
+import LoginPage from '@view/pages/auth/LoginPage';
+import ProductDetailPage from '@view/pages/product/ProductDetailPage';
+import CustomizeMainPage from '@view/pages/custom/CustomizeMainPage';
+import CustomizeStartPage from '@view/pages/custom/CustomizeStartPage';
+import CustomizeInfoPage from '@view/pages/custom/CustomizeInfoPage';
+import SearchPage from '@view/pages/search/SearchPage';
+import HomePage from '@view/pages/main/HomePage';
+import ErrorAlert from '@view/pages/error/ErrorAlert';
+import ROUTES from '../model/constants/routes';
+
+import BaseLayout from '@view/layout/BaseLayout';
 import DetailLayout from "@view/layout/DetailLayout";
 
 const AppRouter: RouteObject[] = [

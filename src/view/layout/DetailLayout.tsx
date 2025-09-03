@@ -9,7 +9,7 @@ import ErrorAlert from "@view/pages/error/ErrorAlert";
 import {useAppSelector} from "@app/store/hook";
 import BottomAction from "@view/pages/product/components/sections/BottomAction";
 
-function BaseLayout() {
+const BaseLayout = () => {
     const theme = useTheme();
     const location = useLocation();
     const dispatch = useDispatch();

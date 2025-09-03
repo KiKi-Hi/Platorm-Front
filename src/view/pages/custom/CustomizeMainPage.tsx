@@ -152,4 +152,4 @@ const CustomizeMainPage = () => {
   );
 };
 
-export {CustomizeMainPage};
+export default CustomizeMainPage;
