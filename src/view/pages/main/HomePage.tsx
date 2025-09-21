@@ -1,13 +1,14 @@
 /** @jsxImportSource @emotion/react */
-import React, {useEffect, useMemo, useRef, useState} from 'react';
-import {css, Global} from '@emotion/react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { css, Global } from '@emotion/react';
 import CategoryChips from './components/CategoryChips';
-import {ProductGrid} from './components/ProductCard';
+import { ProductGrid } from './components/ProductCard';
 import BannerSlider from './components/BannerSlider';
-import {useProductsInfiniteQuery} from "../../../controller/feature/product/api/useProduct";
-import {Category, categoryMap} from "../../../controller/feature/product/constant/category";
+import { useProductsInfiniteQuery } from "../../../controller/feature/product/api/useProduct";
+import { Category, categoryMap } from "../../../controller/feature/product/constant/category";
 import ErrorAlert from '../error/ErrorAlert';
-import {RecommendationsSection} from "@view/pages/main/components/RecommendationSection";
+import { RecommendationsSection } from "@view/pages/main/components/RecommendationSection";
+import { BottomSheet } from "@view/components/elements/bottomSheet/BottomSheet";
 
 const containerStyle = css`
     position: relative;
@@ -49,23 +50,37 @@ const chipsAffixZ = css`
 `;
 
 const bottomSentinelStyle = css`
-  height: 1px;
-  background: transparent;
+    height: 1px;
+    background: transparent;
 `;
 
 const HomePage = () => {
     const [selectedCategory, setSelectedCategory] = useState<Category>(Category.KEYCAP);
+    const [isBottomSheetOpen, setIsBottomSheetOpen] = useState<boolean>(false);
+    const [filters, setFilters] = useState<{ manufacturer: string; minPrice: number; maxPrice: number }>({
+        manufacturer: '',
+        minPrice: 0,
+        maxPrice: 0
+    });
+    const [filterType, setFilterType] = useState<'manufacturer' | 'price-range' | ''>('');
 
-    const { data, fetchNextPage, hasNextPage, isError, isLoading } = useProductsInfiniteQuery({
-        size: 20,
+    const { data, fetchNextPage, hasNextPage, isError, isLoading, refetch } = useProductsInfiniteQuery({
         category: selectedCategory,
+        manufacturer: filters.manufacturer,
+        minPrice: filters.minPrice,
+        maxPrice: filters.maxPrice,
+        size: 20,
+        requestType: 'list',
     });
 
     const observerRef = useRef<HTMLDivElement | null>(null);
     const stickySentinelRef = useRef<HTMLDivElement | null>(null);
 
-    const [isAffixed, setIsAffixed] = useState(false);
-    const [phase, setPhase] = useState<'idle'|'enter'|'stuck'>('idle');
+    const [isAffixed, setIsAffixed] = useState<boolean>(false);
+    const [phase, setPhase] = useState<'idle' | 'enter' | 'stuck'>('idle');
+
+    const openBottomSheet = (category: string) => setIsBottomSheetOpen(true);
+    const closeBottomSheet = () => setIsBottomSheetOpen(false);
 
     useEffect(() => {
         const el = stickySentinelRef.current;
@@ -100,14 +115,18 @@ const HomePage = () => {
         return () => root.removeAttribute('data-hide-topbar');
     }, [isAffixed]);
 
-
     useEffect(() => {
         const target = observerRef.current;
         if (!target) return;
 
+        let fetching = false;
+
         const io = new IntersectionObserver(
             (entries) => {
-                if (entries[0].isIntersecting && hasNextPage) fetchNextPage();
+                if (entries[0].isIntersecting && hasNextPage && !fetching) {
+                    fetching = true;
+                    fetchNextPage().finally(() => (fetching = false));
+                }
             },
             { threshold: 1.0 }
         );
@@ -121,29 +140,36 @@ const HomePage = () => {
         [data]
     );
 
-    const handleCategoryChange = (category: string) => {
-        const mappedCategory = categoryMap[category.toLowerCase()];
-        if (mappedCategory) {
-            setSelectedCategory(mappedCategory);
-        } else {
-            console.error(`Unknown category: ${category}`);
-        }
+    const handleCategoryClick = (type: 'manufacturer' | 'price-range') => {
+        setFilterType(type);
+        setIsBottomSheetOpen(true);
+    };
+
+    const applyFilters = (newFilters: { manufacturer?: string; minPrice?: number; maxPrice?: number }) => {
+        const validFilters = {
+            manufacturer: newFilters.manufacturer || '',
+            minPrice: newFilters.minPrice && newFilters.minPrice > 0 ? newFilters.minPrice : 0,
+            maxPrice: newFilters.maxPrice && newFilters.maxPrice > 0 ? newFilters.maxPrice : 0,
+        };
+
+        setFilters((prevFilters) => ({ ...prevFilters, ...validFilters }));
+        setIsBottomSheetOpen(false);
+        refetch();
     };
 
     return (
         <div css={containerStyle}>
             <Global styles={css`
-        [data-topbar] {
-          transition: transform 200ms ease, opacity 200ms ease;
-          will-change: transform, opacity;
-        }
-        html[data-hide-topbar='true'] [data-topbar] {
-          transform: translateY(-100%);
-          opacity: 0;
-          pointer-events: none;
-        }
-      `} />
-
+                [data-topbar] {
+                    transition: transform 200ms ease, opacity 200ms ease;
+                    will-change: transform, opacity;
+                }
+                html[data-hide-topbar='true'] [data-topbar] {
+                    transform: translateY(-100%);
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            `} />
             <BannerSlider />
             <RecommendationsSection />
 
@@ -156,7 +182,20 @@ const HomePage = () => {
                     phase === 'enter' && chipsAffixEnter,
                 ]}
             >
-                <CategoryChips selected={selectedCategory} onChange={handleCategoryChange} />
+                <CategoryChips
+                    selected={selectedCategory}
+                    onChange={(category: Category) => setSelectedCategory(category)}
+                    onManufacturerClick={() => handleCategoryClick('manufacturer')}
+                    onPriceClick={() => handleCategoryClick('price-range')}
+                />
+                <BottomSheet
+                    visible={isBottomSheetOpen}
+                    type={filterType || 'manufacturer'}
+                    options={filterType === 'manufacturer' ? ['Option 1', 'Option 2'] : []}
+                    initialFilters={filters}
+                    onApply={applyFilters}
+                    onClose={() => setIsBottomSheetOpen(false)}
+                />
             </div>
 
             {isLoading ? (

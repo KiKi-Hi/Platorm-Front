@@ -12,12 +12,11 @@ const categories: { name: Category, label: string, image: string }[] = [
   {name: Category.KEYBOARD, label: '키보드', image: 'Keyboard.png'},
 ];
 
-function CategoryChips({
-                         selected,
-                         onChange
-                       }: {
+function CategoryChips({selected, onChange, onManufacturerClick, onPriceClick}: {
   selected: string;
-  onChange: (category: string) => void;
+  onChange: (category: Category) => void;
+  onManufacturerClick: (category: Category) => void;
+  onPriceClick: (category: Category) => void;
 }) {
   const theme = useTheme();
 
@@ -52,30 +51,37 @@ function CategoryChips({
     text-align: center;
   `;
 
-  const handleClick = (categoryName: string) => {
-    if (onChange) {
-      onChange(categoryName);
-    }
+  const handleClick = (categoryName: Category) => {
+    onChange(categoryName);
   };
 
   return (
-      <div css={containerStyle}>
-        {categories.map((cat) => (
-            <div
-                key={cat.name}
-                css={chipStyle}
-                onClick={() => handleClick(cat.name)}
-            >
-              <img
-                  css={imageStyle}
-                  src={`/assets/img/category/${cat.image}`}
-                  alt={cat.label}
-              />
-              <div css={textStyle(selected === cat.label)}>{cat.label}</div>
-            </div>
-        ))}
-      </div>
-  );
+      <>
+        <div css={containerStyle}>
+          {categories.map((cat) => (
+              <div
+                  key={cat.name}
+                  css={chipStyle}
+                  onClick={() => handleClick(cat.name)}
+              >
+                <img
+                    css={imageStyle}
+                    src={`/assets/img/category/${cat.image}`}
+                    alt={cat.label}/>
+                <div css={textStyle(selected === cat.label)}>{cat.label}</div>
+              </div>
+          ))}
+        </div>
+        <div>
+          <button onClick={() => onChange('manufacturer' as Category)}>
+            카테고리: {selected}
+          </button>
+          <button onClick={() => onManufacturerClick()}>제조사 선택</button>
+          <button onClick={() => onPriceClick()}>가격대 선택</button>
+        </div>
+      </>
+
+);
 }
 
 export default CategoryChips;

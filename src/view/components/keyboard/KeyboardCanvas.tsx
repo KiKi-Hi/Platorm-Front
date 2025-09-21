@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { useKeyboardLoader } from '@service/feature/keyboard/useKeyboardLoader';
+import {useKeyboardLoader} from "../../../controller/feature/keyboard/type";
 
 function KeyboardCanvas({ onReady }: { onReady?: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
